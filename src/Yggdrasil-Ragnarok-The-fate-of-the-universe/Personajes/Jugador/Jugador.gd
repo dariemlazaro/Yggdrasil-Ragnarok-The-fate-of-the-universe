@@ -73,7 +73,8 @@ var falling = false
 #combos
 var hit=0
 var atkstr=""
-var bloqueado=false
+var bloqueado = false
+var blocking = false
 var attacking=false
 var actions=[]
 
@@ -99,19 +100,18 @@ var t = 0.0
 
 func moviendo(delta):
 	t += delta
-	if Input.is_action_pressed("apuntar"):
-		accion = acciones.APUNTANDO
 	
-	if Input.is_action_just_pressed("saltar"):
-		if is_on_floor() and jumpcount > 0 and animation.get("parameters/saltar/active") == false:
-			jumpcount -= 1
-			#direction = Vector3(0,0,1).rotated(Vector3.UP, mesh.rotation.y).normalized()
-			animation.set("parameters/sc_transition/current", "saltar")
-			animation.set("parameters/saltar/active", true)
-			
-			vertical_velocity = jump_velocity
-		
-
+	if Input.is_action_pressed("bloquear"):
+		animation.set("parameters/block_blend/blend_amount", lerp(animation.get("parameters/block_blend/blend_amount"), 1, delta * acceleration))
+		blocking = true
+		$Rotate.start()
+		mesh.global_transform.basis = $camroot/h.global_transform.basis
+	else:
+		animation.set("parameters/block_blend/blend_amount", lerp(animation.get("parameters/block_blend/blend_amount"), 0, delta * acceleration))
+		blocking = false
+	if Input.is_action_just_pressed("rodar") and $roll_timer.is_stopped():
+		$roll_timer.start()
+		animation.set("parameters/rodar/active", true)
 
 	
 	if Input.is_action_pressed("correr"):
@@ -151,23 +151,23 @@ func moviendo(delta):
 		elif corriendo == true and is_on_floor():
 			movement_speed = run_speed * 3
 		
-	elif animation.get("parameters/saltar/active") == true and animation.get("parameters/rc_blend/blend_amount") == 0:
+	elif not $roll_timer.is_stopped():
 		if is_on_floor():
 			friction = 20
 			direction = Vector3(0,0,1).rotated(Vector3.UP, mesh.rotation.y).normalized()
 			
 			if corria == false :
-				movement_speed = run_speed * 3
+				movement_speed = run_speed * 2
 				
 			elif corria == true:
-				movement_speed = run_speed * 2.8
+				movement_speed = run_speed * 1.8
 		else:
 			animation.set("parameters/saltar/active", false)
 	else:
 		if $roll_timer.is_stopped():
 			movement_speed = 0
 			friction = 1
-		if animation.get("parameters/saltar/active") == false and is_on_floor():
+		if animation.get("parameters/rodar/active") == false and is_on_floor():
 			animation.set("parameters/iwr_blend/blend_amount", lerp(animation.get("parameters/iwr_blend/blend_amount"), -1, delta * acceleration))
 
 	if animation.get("parameters/ataque/active") == false:
@@ -243,26 +243,4 @@ func _on_fall_timer_timeout():
 	pass # Replace with function body.
 
 
-
-func _on_Area_body_entered(body):
-	if body.has_method("_on_Timercastle_timeout"):
-		Global.goto_scene("res://Principal.tscn")
-
-
-
-func _on_Castillo_body_entered(body):
-	if body.has_method("_on_Timercastle_timeout"):
-		get_parent().get_node("Navigation/NavigationMeshInstance/casas/castillo/AnimationPlayer").play("reja up")
-		$Timercastle.start()
-
-
-func _on_Timercastle_timeout():
-	Global.goto_scene("res://Mundo/Escenas/SaladelTrono.tscn")
-	pass # Replace with function body.
-
-
-func _on_Posada_body_entered(body):
-	print("OK")
-	if body.has_method("_on_Timercastle_timeout"):
-		get_parent().get_node("CanvasLayer/AnimationPlayer").play("posada")
 
