@@ -42,7 +42,7 @@ func endConversation():
 	pass
 
 
-func _input(event):
+func _input(_event):
 	
 	if Input.is_action_just_pressed("ui_accept") and operating and not speaking:
 		#Si el jugador pulsa accion y no se esta hablando procede al siguiente dialgo
