@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://HUD/ScreenButtons/TouchButtons/stick.gd" type="Script" id=1]
+[ext_resource path="res://HUD/ScreenButtons/TouchButtons/stick.png" type="Texture" id=2]
+[ext_resource path="res://HUD/ScreenButtons/TouchButtons/stick_bg.png" type="Texture" id=3]
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 50.0
+
+[node name="Joystick" type="Sprite"]
+texture = ExtResource( 3 )
+
+[node name="control" type="Position2D" parent="."]
+
+[node name="stick" type="TouchScreenButton" parent="control"]
+position = Vector2( -51, -51 )
+normal = ExtResource( 2 )
+shape = SubResource( 1 )
+script = ExtResource( 1 )
+
+[connection signal="pressed" from="control/stick" to="control/stick" method="_on_stick_pressed"]
+[connection signal="released" from="control/stick" to="control/stick" method="_on_stick_released"]

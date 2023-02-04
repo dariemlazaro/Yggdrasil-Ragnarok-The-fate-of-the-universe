@@ -1,0 +1,25 @@
+{
+  "blocked": {
+    "Path": "",
+    "Filename": "slot_blocked",
+    "MaxPila": 1,
+    "Descripcion": ""
+  },
+
+  "Pocion de vida": {
+    "Path": "Objetos",
+    "Filename": "Pocion_de_vida",
+    "Categoria": "Consumibles",
+    "MaxPila": 99,
+    "Descripcion": "Restaura un poco de salud."
+  },
+
+  "Pocion de energia": {
+    "Path": "Objetos",
+    "Filename": "Pocion_de_energia",
+    "Categoria": "Consumibles",
+    "MaxPila": 99,
+    "Descripcion": "Restaura un poco de energía."
+  },
+
+}

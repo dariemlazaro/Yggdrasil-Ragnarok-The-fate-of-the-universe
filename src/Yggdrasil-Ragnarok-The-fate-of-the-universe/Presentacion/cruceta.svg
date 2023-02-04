@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   inkscape:export-ydpi="239.98146"
+   inkscape:export-xdpi="239.98146"
+   inkscape:export-filename="C:\Users\Dariem\Desktop\bgnewcomplete.png"
+   inkscape:version="1.1 (c68e22c387, 2021-05-23)"
+   sodipodi:docname="cruceta.svg"
+   viewBox="0 0 141.4984 151.38249"
+   height="151.38249"
+   width="141.4984"
+   id="svg9"
+   version="1.1"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs13">
+    <filter
+       y="-0.030529916"
+       height="1.0610598"
+       inkscape:menu-tooltip="Darkens the edge with an inner blur and adds a flexible glow"
+       inkscape:menu="Shadows and Glows"
+       inkscape:label="Dark and Glow"
+       style="color-interpolation-filters:sRGB"
+       id="filter5767"
+       x="-0.025055977"
+       width="1.050112">
+      <feGaussianBlur
+         stdDeviation="5"
+         result="result6"
+         id="feGaussianBlur5757" />
+      <feComposite
+         result="result8"
+         in="SourceGraphic"
+         operator="atop"
+         in2="result6"
+         id="feComposite5759" />
+      <feComposite
+         result="result9"
+         operator="over"
+         in2="SourceAlpha"
+         in="result8"
+         id="feComposite5761" />
+      <feColorMatrix
+         values="1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 1 0 "
+         result="result10"
+         id="feColorMatrix5763" />
+      <feBlend
+         in="result10"
+         mode="normal"
+         in2="result6"
+         id="feBlend5765" />
+    </filter>
+    <filter
+       inkscape:menu-tooltip="In and out glow with a possible offset and colorizable flood"
+       inkscape:menu="Shadows and Glows"
+       inkscape:label="Cutout Glow"
+       style="color-interpolation-filters:sRGB"
+       id="filter6687"
+       x="-0.10487187"
+       y="-0.11132049"
+       width="1.2192038"
+       height="1.2326827">
+      <feOffset
+         dy="3"
+         dx="3"
+         id="feOffset6677" />
+      <feGaussianBlur
+         stdDeviation="13.857249"
+         result="blur"
+         id="feGaussianBlur6679" />
+      <feFlood
+         flood-color="rgb(0,0,0)"
+         flood-opacity="1"
+         result="flood"
+         id="feFlood6681" />
+      <feComposite
+         in="flood"
+         in2="SourceGraphic"
+         operator="in"
+         result="composite"
+         id="feComposite6683" />
+      <feBlend
+         in="blur"
+         in2="composite"
+         mode="normal"
+         id="feBlend6685" />
+    </filter>
+  </defs>
+  <sodipodi:namedview
+     id="namedview11"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     showgrid="false"
+     inkscape:zoom="0.70710678"
+     inkscape:cx="-555.07882"
+     inkscape:cy="-164.75588"
+     inkscape:window-width="1920"
+     inkscape:window-height="1017"
+     inkscape:window-x="-8"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="g8450"
+     showguides="true"
+     inkscape:guide-bbox="true">
+    <inkscape:grid
+       type="xygrid"
+       id="grid6742"
+       originx="-571.71595"
+       originy="-215.33281" />
+  </sodipodi:namedview>
+  <g
+     inkscape:groupmode="layer"
+     inkscape:label="Image"
+     id="g15"
+     transform="translate(-636.83296,-265.02201)">
+    <g
+       id="g37973"
+       transform="translate(-75.769369,-62.338471)"
+       style="stroke:#ffffff;stroke-opacity:1">
+      <g
+         id="g854"
+         transform="matrix(3.1533441,0,0,3.1533441,-303.37698,-241.23419)">
+        <g
+           id="g8450">
+          <path
+             style="fill:#6421ac;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+             d="m 322.19107,199.12167 16.1673,-1.64972 -1.31978,-17.15713 12.20796,0.32995 0.65989,14.18762 17.15712,-0.82486 v 15.01249 l -15.67237,0.16497 0.98983,16.99215 -14.51757,2.14465 v -18.14697 l -15.34243,1.8147 z"
+             id="path6233" />
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>

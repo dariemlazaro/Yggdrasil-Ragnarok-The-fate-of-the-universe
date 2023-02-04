@@ -1,0 +1,124 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://Global/Global.gd" type="Script" id=1]
+[ext_resource path="res://Global/Game Boy Advance - Shining Force Resurrection of the Dark Dragon - Wyvern.png" type="Texture" id=2]
+[ext_resource path="res://HUD/ScreenButtons/TouchButtons.tscn" type="PackedScene" id=3]
+
+[sub_resource type="AtlasTexture" id=2]
+flags = 4
+atlas = ExtResource( 2 )
+region = Rect2( 0, 0, 107, 111 )
+
+[sub_resource type="AtlasTexture" id=3]
+flags = 4
+atlas = ExtResource( 2 )
+region = Rect2( 107, 0, 107, 111 )
+
+[sub_resource type="AtlasTexture" id=4]
+flags = 4
+atlas = ExtResource( 2 )
+region = Rect2( 214, 0, 107, 111 )
+
+[sub_resource type="AtlasTexture" id=5]
+flags = 4
+atlas = ExtResource( 2 )
+region = Rect2( 321, 0, 107, 111 )
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ SubResource( 2 ), SubResource( 3 ), SubResource( 4 ), SubResource( 5 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[node name="Global" type="Node2D"]
+script = ExtResource( 1 )
+
+[node name="Touch" type="CanvasLayer" parent="."]
+layer = 3
+
+[node name="TouchButtons" parent="Touch" instance=ExtResource( 3 )]
+visible = false
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+
+[node name="Tween" type="Tween" parent="."]
+
+[node name="Loading" type="CanvasLayer" parent="."]
+layer = 4
+
+[node name="Control" type="Control" parent="Loading"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Fondo" type="ColorRect" parent="Loading/Control"]
+visible = false
+margin_right = 1366.0
+margin_bottom = 768.0
+rect_min_size = Vector2( 1366, 768 )
+mouse_filter = 2
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MarginContainer" type="MarginContainer" parent="Loading/Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CenterContainer" type="CenterContainer" parent="Loading/Control/MarginContainer"]
+margin_top = 568.0
+margin_right = 1366.0
+margin_bottom = 768.0
+rect_min_size = Vector2( 1366, 200 )
+mouse_filter = 2
+size_flags_vertical = 8
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="progress" type="ProgressBar" parent="Loading/Control/MarginContainer/CenterContainer"]
+visible = false
+margin_left = 214.0
+margin_top = 64.0
+margin_right = 1152.0
+margin_bottom = 135.0
+rect_min_size = Vector2( 938, 71 )
+size_flags_horizontal = 6
+value = 50.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Control2" type="Control" parent="Loading"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -20.0
+margin_top = -20.0
+margin_right = 20.0
+margin_bottom = 20.0
+mouse_filter = 2
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="Node2D" type="Node2D" parent="Loading/Control2"]
+
+[node name="Loading" type="AnimatedSprite" parent="Loading/Control2/Node2D"]
+visible = false
+scale = Vector2( 3, 3 )
+frames = SubResource( 1 )
+
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

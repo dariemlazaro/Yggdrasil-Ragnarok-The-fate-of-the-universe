@@ -1,0 +1,58 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://HUD/ScreenButtons/TouchButtons/button_a.png" type="Texture" id=1]
+[ext_resource path="res://HUD/ScreenButtons/TouchButtons/Joystick.tscn" type="PackedScene" id=2]
+[ext_resource path="res://HUD/ScreenButtons/TouchButtons/mirilla_negra.png" type="Texture" id=3]
+[ext_resource path="res://HUD/ScreenButtons/TouchButtons/Joystickcamara.tscn" type="PackedScene" id=5]
+[ext_resource path="res://HUD/ScreenButtons/apuntar.gd" type="Script" id=6]
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 30.0
+
+[sub_resource type="CircleShape2D" id=2]
+radius = 9.0
+
+[node name="TouchButtons" type="Control"]
+margin_right = 1366.0
+margin_bottom = 768.0
+rect_min_size = Vector2( 1366, 768 )
+mouse_filter = 2
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="Joystick" parent="." instance=ExtResource( 2 )]
+position = Vector2( 265.457, 600 )
+
+[node name="Joystickcamara" parent="." instance=ExtResource( 5 )]
+position = Vector2( 1050, 600 )
+
+[node name="atacar" type="TouchScreenButton" parent="."]
+position = Vector2( 1204.07, 516.428 )
+scale = Vector2( 2, 2 )
+normal = ExtResource( 1 )
+shape = SubResource( 1 )
+action = "ataque"
+
+[node name="apuntar" type="TouchScreenButton" parent="."]
+position = Vector2( 1172.38, 288.611 )
+scale = Vector2( 8, 8 )
+normal = ExtResource( 3 )
+shape = SubResource( 2 )
+script = ExtResource( 6 )
+
+[node name="Button" type="Button" parent="apuntar"]
+margin_right = 12.0
+margin_bottom = 20.0
+rect_scale = Vector2( 1e-05, 1e-05 )
+disabled = true
+toggle_mode = true
+action_mode = 0
+flat = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="pressed" from="apuntar" to="apuntar" method="_on_apuntar_pressed"]
+[connection signal="toggled" from="apuntar/Button" to="apuntar" method="_on_Button_toggled"]

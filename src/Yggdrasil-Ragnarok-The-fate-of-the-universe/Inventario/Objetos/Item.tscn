@@ -1,0 +1,39 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Recursos/Fuentes/SAOUI_Regular.otf" type="DynamicFontData" id=1]
+[ext_resource path="res://Inventario/Objetos/Item.gd" type="Script" id=2]
+[ext_resource path="res://Inventario/Objetos/iconos/Pocion_de_energia.png" type="Texture" id=3]
+
+[sub_resource type="DynamicFont" id=1]
+size = 25
+font_data = ExtResource( 1 )
+
+[node name="Item" type="Node2D"]
+script = ExtResource( 2 )
+
+[node name="icon" type="TextureRect" parent="."]
+margin_right = 50.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 70, 70 )
+mouse_filter = 2
+texture = ExtResource( 3 )
+expand = true
+stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="count" type="Label" parent="."]
+margin_left = 45.0
+margin_top = 45.0
+margin_right = 67.0
+margin_bottom = 71.0
+size_flags_horizontal = 8
+size_flags_vertical = 8
+custom_fonts/font = SubResource( 1 )
+text = "99"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
