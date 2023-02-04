@@ -1,0 +1,35 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Mundo/Escenas/Base_arbol/base.gd" type="Script" id=1]
+[ext_resource path="res://Mundo/RoomManager.gd" type="Script" id=2]
+[ext_resource path="res://HUD/demo_dlc_hud.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Mundo/Escenas/Base_arbol/base arbol.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Personajes/Jugador/Jugador.tscn" type="PackedScene" id=21]
+
+[node name="Base" type="Spatial"]
+script = ExtResource( 1 )
+
+[node name="RoomManager" type="RoomManager" parent="."]
+transform = Transform( -0.818478, -0.376709, 0.433801, 0.411551, 0.142434, 0.900188, -0.400897, 0.915316, 0.0384557, 18.5714, 14.6405, 0 )
+roomlist = NodePath("../rooms")
+script = ExtResource( 2 )
+
+[node name="rooms" type="Spatial" parent="."]
+
+[node name="base arbol" parent="rooms" instance=ExtResource( 4 )]
+
+[node name="Player" parent="." instance=ExtResource( 21 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.268737, 4.22192, 14.4239 )
+
+[node name="Playerpos" type="Spatial" parent="."]
+
+[node name="Position3D" type="Position3D" parent="Playerpos"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.64228, 0 )
+
+[node name="game_ui" type="CanvasLayer" parent="."]
+layer = 2
+
+[node name="story_tell_scene" parent="game_ui" instance=ExtResource( 3 )]
+
+[node name="Camera" type="Camera" parent="."]
+transform = Transform( 0.995314, 0, -0.096697, 0, 1, 0, 0.096697, 0, 0.995314, 18.222, 10.3372, -7.89182 )

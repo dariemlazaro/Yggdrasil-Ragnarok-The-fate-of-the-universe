@@ -198,28 +198,21 @@ func moviendo(delta):
 		mesh.rotation.y = lerp_angle(mesh.rotation.y, atan2(direction.x, direction.z), delta * angular_acceleration)
 
 
-func ataque(delta):
+func ataque(_delta):
 
 	if Input.is_action_just_pressed("atacar") and hit < 1 and is_on_floor():
 		hit+=1
 		$atack_timer.start()
-		
 		if animation.get("parameters/ataque/active") == false:
 			animation.set("parameters/ataque/active", true)
 
 	if animation.get("parameters/ataque/active") == true:
 		friction = 20
-		direction = Vector3(0,0,1).rotated(Vector3.UP, mesh.rotation.y).normalized()
+
 		
-		if corria == false :
-			movement_speed = run_speed /3
-			
-		elif corria == true:
-			movement_speed = run_speed 
-		velocity = lerp(velocity , direction * movement_speed, delta * friction * acceleration)
-		velocity = move_and_slide(velocity + Vector3.DOWN * vertical_velocity, Vector3.UP)
 
 	if $atack_timer.is_stopped():
+		$mesh/Armature/Skeleton/BoneAttachment2/AXE/ataque/CollisionShape.disabled = true
 		if hit > 0 and animation.get("parameters/ataque/active") == false:
 			attacking=true
 			atkstr=""
@@ -244,3 +237,8 @@ func _on_fall_timer_timeout():
 
 
 
+
+
+func _on_ataque_area_entered(_area):
+	$mesh/Armature/Skeleton/BoneAttachment2/AXE/ataque/CollisionShape.disabled = true
+	pass # Replace with function body.

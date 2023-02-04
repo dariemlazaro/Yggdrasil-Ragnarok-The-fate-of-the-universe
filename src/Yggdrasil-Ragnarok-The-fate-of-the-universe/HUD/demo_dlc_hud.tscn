@@ -1,0 +1,93 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://Recursos/Fuentes/general_ui/LeagueSpartan-Regular.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://Recursos/Fuentes/general_ui/Megrim.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://HUD/cuadro de dialogo1.png" type="Texture" id=3]
+[ext_resource path="res://HUD/demo_dlc_hud.gd" type="Script" id=4]
+
+[sub_resource type="StyleBoxTexture" id=4]
+texture = ExtResource( 3 )
+region_rect = Rect2( 0, 0, 920, 244 )
+margin_left = 60.0
+margin_right = 64.0
+margin_top = 84.0
+margin_bottom = 64.0
+
+[sub_resource type="DynamicFont" id=2]
+size = 30
+use_filter = true
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 24
+use_filter = true
+font_data = ExtResource( 1 )
+
+[sub_resource type="Animation" id=6]
+resource_name = "new_dial"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/path = NodePath("ui/container/dialog_window_bottom/text:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[node name="story_tell_scene" type="Node"]
+script = ExtResource( 4 )
+
+[node name="ui" type="CanvasLayer" parent="."]
+
+[node name="container" type="Control" parent="ui"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+
+[node name="dialog_window_bottom" type="Panel" parent="ui/container"]
+visible = false
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -472.0
+margin_top = -283.0
+margin_right = 478.0
+margin_bottom = 3.0
+custom_styles/panel = SubResource( 4 )
+
+[node name="char_name" type="Label" parent="ui/container/dialog_window_bottom"]
+margin_left = 177.0
+margin_top = 21.0
+margin_right = 420.0
+margin_bottom = 72.0
+custom_colors/font_color = Color( 1, 0.823529, 0.270588, 1 )
+custom_fonts/font = SubResource( 2 )
+text = "Urd"
+valign = 1
+
+[node name="text" type="Label" parent="ui/container/dialog_window_bottom"]
+modulate = Color( 1, 1, 1, 0 )
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -247.0
+margin_top = -46.0
+margin_right = 396.0
+margin_bottom = 47.0
+custom_colors/font_color = Color( 0, 0, 0, 0.784314 )
+custom_fonts/font = SubResource( 3 )
+text = "DJW83YR893Y8y8y2328y,8qyd89349845yT78E24353657M7870X230d3uj2p359ujf8wyy8r9y8y98345bu6978957,98908tf6yf234c5d00i124289j7S82928RRM82938946478K789"
+autowrap = true
+
+[node name="dialog_anim" type="AnimationPlayer" parent="."]
+anims/new_dial = SubResource( 6 )
+
+[connection signal="animation_finished" from="dialog_anim" to="." method="_on_dialog_anim_animation_finished"]
