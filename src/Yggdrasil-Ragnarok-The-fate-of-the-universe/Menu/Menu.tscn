@@ -1,336 +1,518 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=37 format=2]
 
-[ext_resource path="res://Presentacion/bgnewcomplete.png" type="Texture" id=1]
-[ext_resource path="res://Recursos/Fuentes/AlternateGothicExCondATF-Bold.otf" type="DynamicFontData" id=2]
-[ext_resource path="res://Menu/docs_logo.png" type="Texture" id=3]
-[ext_resource path="res://Menu/gimp_logo.png" type="Texture" id=4]
-[ext_resource path="res://Menu/inkscape.png" type="Texture" id=5]
-[ext_resource path="res://Presentacion/Godot.png" type="Texture" id=6]
+[ext_resource path="res://Recursos/Fuentes/general_ui/Megrim.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://Menu/arrow_back.png" type="Texture" id=2]
+[ext_resource path="res://Recursos/Fuentes/general_ui/LeagueSpartan-Thin.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://Presentacion/bgnewcomplete_min.png" type="Texture" id=4]
+[ext_resource path="res://Menu/Blender_logo_no_text.svg.png" type="Texture" id=5]
+[ext_resource path="res://Menu/Calligrakrita-base.svg.png" type="Texture" id=6]
 [ext_resource path="res://Menu/Menu.gd" type="Script" id=7]
 [ext_resource path="res://Recursos/Fuentes/AlternateGothicExCondATF-Bold.tres" type="DynamicFont" id=8]
-[ext_resource path="res://Menu/286-2864921_blender-logo-blender-3d-logo-hd-png-download.png" type="Texture" id=10]
+[ext_resource path="res://Menu/menu_assets/main_bg_background.png" type="Texture" id=9]
+[ext_resource path="res://Menu/Godot_theme_light.png" type="Texture" id=10]
+[ext_resource path="res://Menu/menu_assets/game_logo.png" type="Texture" id=11]
+[ext_resource path="res://HUD/intro_assets/intro_background_tree.png" type="Texture" id=12]
+[ext_resource path="res://Menu/menu_assets/estilos/button_n.tres" type="StyleBox" id=13]
+[ext_resource path="res://Recursos/Fuentes/general_ui/LeagueSpartan-SemiBold.ttf" type="DynamicFontData" id=14]
+[ext_resource path="res://Recursos/Fuentes/general_ui/LeagueSpartan-Regular.ttf" type="DynamicFontData" id=15]
+[ext_resource path="res://Menu/menu_assets/main_hero.png" type="Texture" id=16]
+[ext_resource path="res://Menu/menu_assets/github-logo.png" type="Texture" id=17]
+[ext_resource path="res://Menu/menu_assets/github-logo_p.png" type="Texture" id=18]
+[ext_resource path="res://Menu/gimp_logo.png" type="Texture" id=19]
+[ext_resource path="res://Menu/menu_assets/cnoaraulgames_stylished_logo.jpg" type="Texture" id=20]
+[ext_resource path="res://Menu/menu_assets/fb_icon.tres" type="Texture" id=21]
+[ext_resource path="res://Menu/menu_assets/fb_twitter.tres" type="Texture" id=22]
+[ext_resource path="res://Menu/menu_assets/estilos/button_p.tres" type="StyleBox" id=23]
+[ext_resource path="res://HUD/intro_assets/lensflare0_alpha.png" type="Texture" id=24]
 
-[sub_resource type="DynamicFont" id=2]
-size = 100
-font_data = ExtResource( 2 )
+[sub_resource type="CanvasItemMaterial" id=4]
 
-[sub_resource type="DynamicFont" id=3]
+[sub_resource type="Animation" id=9]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 410, 379 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath(".:rotation_degrees")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ -8.20093 ]
+}
+
+[sub_resource type="Animation" id=8]
+resource_name = "idle"
+length = 15.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 5.9, 6.1, 10 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 931, 323 ), Vector2( 410, 379 ), Vector2( 543.59, 364.641 ), Vector2( 931, 323 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 5, 5.8, 6.2, 7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath(".:rotation_degrees")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 5.9, 6.1, 10 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ -8.20093, -8.20093, 5.2, 5.2 ]
+}
+
+[sub_resource type="CanvasItemMaterial" id=15]
+blend_mode = 1
+
+[sub_resource type="Curve" id=16]
+_data = [ Vector2( 0, 0 ), 0.0, 0.0, 0, 0, Vector2( 0.308979, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 0 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="DynamicFont" id=5]
 size = 30
-font_data = ExtResource( 2 )
+outline_color = Color( 0.231373, 0.145098, 0.117647, 1 )
+use_filter = true
+font_data = ExtResource( 15 )
 
-[sub_resource type="StyleBoxFlat" id=1]
-bg_color = Color( 1, 1, 1, 1 )
+[sub_resource type="DynamicFont" id=7]
+size = 26
+use_filter = true
+font_data = ExtResource( 3 )
 
-[node name="Control" type="Control"]
+[sub_resource type="DynamicFont" id=11]
+size = 25
+font_data = ExtResource( 15 )
+
+[sub_resource type="DynamicFont" id=14]
+size = 25
+outline_color = Color( 0, 0, 0, 0.372549 )
+font_data = ExtResource( 15 )
+
+[sub_resource type="DynamicFont" id=12]
+size = 25
+font_data = ExtResource( 14 )
+
+[sub_resource type="DynamicFont" id=13]
+size = 25
+font_data = ExtResource( 15 )
+
+[sub_resource type="DynamicFont" id=10]
+size = 70
+use_filter = true
+font_data = ExtResource( 1 )
+
+[node name="main_menu" type="Control"]
 rect_min_size = Vector2( 1366, 768 )
 script = ExtResource( 7 )
 __meta__ = {
+"_edit_lock_": true,
 "_edit_use_anchors_": true
 }
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="scen_bg" type="TextureRect" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
-color = Color( 0.27451, 0.819608, 0.145098, 1 )
+texture = ExtResource( 9 )
+expand = true
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
 
-[node name="TextureRect" type="TextureRect" parent="."]
-margin_right = 1366.0
-margin_bottom = 708.0
-rect_min_size = Vector2( 1366, 768 )
+[node name="IntroBackgroundTree" type="Sprite" parent="scen_bg"]
+modulate = Color( 1, 1, 1, 0 )
+self_modulate = Color( 0.988235, 0.352941, 0, 0.435294 )
+material = SubResource( 4 )
+position = Vector2( 410, 379 )
+rotation = -0.143133
+scale = Vector2( 1.57722, 1.47038 )
+texture = ExtResource( 12 )
+
+[node name="bg_anim" type="AnimationPlayer" parent="scen_bg/IntroBackgroundTree"]
+autoplay = "idle"
+playback_speed = 0.1
+anims/RESET = SubResource( 9 )
+anims/idle = SubResource( 8 )
+
+[node name="bottom_container" type="Control" parent="."]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="bottom_container"]
+material = SubResource( 15 )
+position = Vector2( -65, 6 )
+amount = 60
+speed_scale = 2.0
+randomness = 1.0
+texture = ExtResource( 24 )
+emission_shape = 2
+emission_rect_extents = Vector2( 700, 0 )
+gravity = Vector2( 0, -300 )
+radial_accel = 100.0
+scale_amount = 3.47
+scale_amount_curve = SubResource( 16 )
+color = Color( 1, 0.52549, 0.227451, 1 )
+
+[node name="GameLogo" type="TextureRect" parent="bottom_container"]
+modulate = Color( 0.291992, 0.226557, 0.177648, 1 )
+margin_left = -317.0
+margin_top = -673.0
+margin_right = 86.0
+margin_bottom = -363.0
+texture = ExtResource( 11 )
+expand = true
+stretch_mode = 6
+
+[node name="main_actions" type="VBoxContainer" parent="bottom_container"]
+margin_left = 240.0
+margin_top = -462.0
+margin_right = 280.0
+margin_bottom = -389.0
+custom_constants/separation = 85
+
+[node name="item1" type="Control" parent="bottom_container/main_actions"]
+margin_right = 40.0
+
+[node name="button_play" type="Button" parent="bottom_container/main_actions/item1"]
+margin_right = 278.0
+margin_bottom = 80.0
+focus_mode = 0
+custom_colors/font_color = Color( 0.231373, 0.145098, 0.117647, 1 )
+custom_colors/font_color_hover = Color( 0.231373, 0.145098, 0.117647, 1 )
+custom_colors/font_color_pressed = Color( 0.25098, 0.0431373, 0.0431373, 1 )
+custom_fonts/font = SubResource( 5 )
+custom_styles/hover = ExtResource( 13 )
+custom_styles/pressed = ExtResource( 23 )
+custom_styles/normal = ExtResource( 13 )
+enabled_focus_mode = 0
+text = "JUGAR!"
+
+[node name="item2" type="Control" parent="bottom_container/main_actions"]
+margin_top = 85.0
+margin_right = 40.0
+margin_bottom = 85.0
+
+[node name="button_credits" type="Button" parent="bottom_container/main_actions/item2"]
+margin_right = 278.0
+margin_bottom = 80.0
+focus_mode = 0
+custom_colors/font_color = Color( 0.231373, 0.145098, 0.117647, 1 )
+custom_colors/font_color_hover = Color( 0.231373, 0.145098, 0.117647, 1 )
+custom_colors/font_color_pressed = Color( 0.215686, 0.054902, 0.054902, 1 )
+custom_fonts/font = SubResource( 5 )
+custom_styles/hover = ExtResource( 13 )
+custom_styles/pressed = ExtResource( 23 )
+custom_styles/normal = ExtResource( 13 )
+enabled_focus_mode = 0
+text = "CRÉDITOS"
+
+[node name="item3" type="Control" parent="bottom_container/main_actions"]
+margin_top = 170.0
+margin_right = 40.0
+margin_bottom = 170.0
+
+[node name="btn_github" type="TextureButton" parent="bottom_container/main_actions/item3"]
+margin_left = 26.0
+margin_top = 5.0
+margin_right = 85.0
+margin_bottom = 60.0
+texture_normal = ExtResource( 17 )
+texture_pressed = ExtResource( 18 )
+expand = true
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="bottom_container"]
+margin_left = -426.0
+margin_top = -742.0
+margin_right = 320.0
+margin_bottom = -691.0
+custom_colors/font_color = Color( 0, 0, 0, 0.862745 )
+custom_fonts/font = SubResource( 7 )
+text = "Bajo licencia Creative Commons del Global Game Jam"
+align = 2
+valign = 1
+
+[node name="MainHero" type="TextureRect" parent="bottom_container"]
+modulate = Color( 0.541176, 0.415686, 0.32549, 1 )
+margin_left = -531.0
+margin_top = -348.0
+margin_right = -55.0
+margin_bottom = 104.0
+rect_rotation = -9.49788
+texture = ExtResource( 16 )
+expand = true
+stretch_mode = 6
+
+[node name="credits_screeen" type="TextureRect" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-expand = true
-stretch_mode = 7
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Margen" type="MarginContainer" parent="."]
-anchor_right = 1.0
-anchor_bottom = 1.0
-mouse_filter = 2
-custom_constants/margin_right = 30
-custom_constants/margin_top = 30
-custom_constants/margin_left = 30
-custom_constants/margin_bottom = 30
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="VBox" type="VBoxContainer" parent="Margen"]
-margin_left = 30.0
-margin_top = 30.0
-margin_right = 1336.0
-margin_bottom = 738.0
-mouse_filter = 2
-custom_constants/separation = 20
-
-[node name="Logo" type="TextureRect" parent="Margen/VBox"]
-margin_right = 1306.0
-margin_bottom = 300.0
-rect_min_size = Vector2( 1306, 300 )
-mouse_filter = 2
-size_flags_horizontal = 6
-size_flags_vertical = 2
-size_flags_stretch_ratio = 6.13
-texture = ExtResource( 1 )
+texture = ExtResource( 9 )
 expand = true
 stretch_mode = 6
 __meta__ = {
-"_edit_use_anchors_": false
+"_edit_lock_": true
 }
 
-[node name="Label" type="Label" parent="Margen/VBox"]
-margin_top = 480.0
-margin_right = 1306.0
-margin_bottom = 580.0
-size_flags_vertical = 8
-custom_fonts/font = SubResource( 2 )
-text = "Yggdrasil"
-align = 1
+[node name="programmers_label" type="Label" parent="credits_screeen"]
+margin_left = 228.0
+margin_top = 314.0
+margin_right = 309.0
+margin_bottom = 338.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 11 )
+text = "Código:"
 
-[node name="HBox" type="HBoxContainer" parent="Margen/VBox"]
-margin_top = 600.0
-margin_right = 1306.0
-margin_bottom = 657.0
-size_flags_horizontal = 3
-size_flags_vertical = 8
-custom_constants/separation = 30
+[node name="made_with" type="Label" parent="credits_screeen"]
+margin_left = 561.0
+margin_top = 619.0
+margin_right = 663.0
+margin_bottom = 643.0
+custom_colors/font_color = Color( 0.282353, 0.345098, 0.388235, 1 )
+custom_fonts/font = SubResource( 14 )
+text = "Hecho en:"
+valign = 1
 
-[node name="Jugar" type="Button" parent="Margen/VBox/HBox"]
-margin_right = 415.0
-margin_bottom = 57.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-custom_fonts/font = ExtResource( 8 )
-text = "Jugar"
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="programmer_names" type="Label" parent="credits_screeen"]
+margin_left = 321.0
+margin_top = 315.0
+margin_right = 621.0
+margin_bottom = 366.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 12 )
+text = "Dariem Lázaro García López
+Raúl Cardero Noa"
 
-[node name="Ver Creditos" type="Button" parent="Margen/VBox/HBox"]
-margin_left = 445.0
-margin_right = 860.0
-margin_bottom = 57.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-custom_fonts/font = ExtResource( 8 )
-text = "Ver Créditos"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Salir" type="Button" parent="Margen/VBox/HBox"]
-margin_left = 890.0
-margin_right = 1306.0
-margin_bottom = 57.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-custom_fonts/font = ExtResource( 8 )
-text = "Salir"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="HBoxContainer" type="HBoxContainer" parent="Margen/VBox"]
-margin_top = 677.0
-margin_right = 1306.0
-margin_bottom = 708.0
-
-[node name="Copyrigth" type="Label" parent="Margen/VBox/HBoxContainer"]
-margin_right = 863.0
-margin_bottom = 31.0
-size_flags_horizontal = 3
-size_flags_vertical = 8
-custom_fonts/font = SubResource( 3 )
-text = "Versión 1.0.0 (betA)"
-
-[node name="License" type="Label" parent="Margen/VBox/HBoxContainer"]
-margin_left = 867.0
-margin_right = 1306.0
-margin_bottom = 31.0
-size_flags_vertical = 8
-custom_fonts/font = SubResource( 3 )
-text = "Bajo licencia Creative Commons del Global Game Jam"
-
-[node name="Panel" type="Panel" parent="Margen"]
-visible = false
-margin_left = 30.0
-margin_top = 30.0
-margin_right = 1336.0
-margin_bottom = 738.0
-mouse_filter = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-custom_styles/panel = SubResource( 1 )
-
-[node name="Margen" type="MarginContainer" parent="Margen/Panel"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-mouse_filter = 2
-custom_constants/margin_right = 30
-custom_constants/margin_left = 30
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Atras" type="Button" parent="Margen/Panel/Margen"]
-margin_left = 30.0
-margin_right = 118.0
-margin_bottom = 57.0
-size_flags_horizontal = 0
-size_flags_vertical = 0
-custom_fonts/font = ExtResource( 8 )
-text = "Atrás"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="VBoxContainer2" type="VBoxContainer" parent="Margen/Panel/Margen"]
-margin_left = 30.0
-margin_right = 1276.0
-margin_bottom = 708.0
-mouse_filter = 2
-custom_constants/separation = 40
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="VBoxContainer" type="VBoxContainer" parent="Margen/Panel/Margen/VBoxContainer2"]
-margin_left = 58.0
-margin_top = 87.0
+[node name="collab_title" type="Label" parent="credits_screeen"]
+margin_left = 935.0
+margin_top = 190.0
 margin_right = 1188.0
-margin_bottom = 381.0
-size_flags_horizontal = 4
-size_flags_vertical = 6
-custom_constants/separation = 50
-
-[node name="HBoxContainer" type="HBoxContainer" parent="Margen/Panel/Margen/VBoxContainer2/VBoxContainer"]
-margin_right = 1130.0
-margin_bottom = 51.0
-custom_constants/separation = 20
-
-[node name="Label" type="Label" parent="Margen/Panel/Margen/VBoxContainer2/VBoxContainer/HBoxContainer"]
-margin_right = 200.0
-margin_bottom = 51.0
+margin_bottom = 214.0
 custom_colors/font_color = Color( 0, 0, 0, 1 )
-custom_fonts/font = ExtResource( 8 )
-text = "Programador: "
+custom_fonts/font = SubResource( 12 )
+text = "Con la participación de:"
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Margen/Panel/Margen/VBoxContainer2/VBoxContainer/HBoxContainer"]
-margin_left = 220.0
-margin_right = 610.0
-margin_bottom = 51.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Label" type="Label" parent="Margen/Panel/Margen/VBoxContainer2/VBoxContainer/HBoxContainer/VBoxContainer"]
-margin_right = 390.0
-margin_bottom = 51.0
-custom_colors/font_color = Color( 0, 0, 0, 1 )
-custom_fonts/font = ExtResource( 8 )
-text = "Dariem Lázaro García López"
-
-[node name="HBoxContainer2" type="HBoxContainer" parent="Margen/Panel/Margen/VBoxContainer2/VBoxContainer"]
-margin_top = 101.0
-margin_right = 1130.0
-margin_bottom = 294.0
-custom_constants/separation = 45
-
-[node name="Label" type="Label" parent="Margen/Panel/Margen/VBoxContainer2/VBoxContainer/HBoxContainer2"]
-margin_right = 186.0
-margin_bottom = 193.0
+[node name="designers" type="Label" parent="credits_screeen"]
+margin_left = 168.0
+margin_top = 402.0
+margin_right = 300.0
+margin_bottom = 426.0
 size_flags_vertical = 1
 custom_colors/font_color = Color( 0, 0, 0, 1 )
-custom_fonts/font = ExtResource( 8 )
+custom_fonts/font = SubResource( 13 )
 text = "Diseñadores:"
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Margen/Panel/Margen/VBoxContainer2/VBoxContainer/HBoxContainer2"]
-margin_left = 231.0
-margin_right = 1130.0
-margin_bottom = 193.0
-custom_constants/separation = 20
+[node name="game_ver" type="Label" parent="credits_screeen"]
+margin_left = 1219.0
+margin_top = 735.0
+margin_right = 1349.0
+margin_bottom = 759.0
+size_flags_vertical = 1
+custom_colors/font_color = Color( 0.643137, 0.611765, 0.568627, 1 )
+custom_fonts/font = SubResource( 13 )
+text = "ver. 1.0 beta"
 
-[node name="Label" type="Label" parent="Margen/Panel/Margen/VBoxContainer2/VBoxContainer/HBoxContainer2/VBoxContainer"]
-margin_right = 899.0
-margin_bottom = 51.0
+[node name="designer_names" type="Label" parent="credits_screeen"]
+margin_left = 323.0
+margin_top = 402.0
+margin_right = 686.0
+margin_bottom = 507.0
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_fonts/font = ExtResource( 8 )
-text = "Dariem Lázaro García López (2D, 3D, Ambientación y Escenario.)"
+text = "Dariem Lázaro García López
+Nelson Delgado Reyes
+Raúl Cardero Noa"
+autowrap = true
 
-[node name="Label2" type="Label" parent="Margen/Panel/Margen/VBoxContainer2/VBoxContainer/HBoxContainer2/VBoxContainer"]
-margin_top = 71.0
-margin_right = 899.0
+[node name="credits_title" type="Label" parent="credits_screeen"]
+margin_left = 488.0
+margin_top = 46.0
+margin_right = 845.0
 margin_bottom = 122.0
-custom_colors/font_color = Color( 0, 0, 0, 1 )
-custom_fonts/font = ExtResource( 8 )
-text = "Héctor Andy Rivero Vila (2D)"
+custom_colors/font_color = Color( 0.152941, 0.109804, 0.0941176, 1 )
+custom_fonts/font = SubResource( 10 )
+text = "CRÉDITOS"
+align = 1
+valign = 1
 
-[node name="Label3" type="Label" parent="Margen/Panel/Margen/VBoxContainer2/VBoxContainer/HBoxContainer2/VBoxContainer"]
-margin_top = 142.0
-margin_right = 899.0
-margin_bottom = 193.0
-custom_colors/font_color = Color( 0, 0, 0, 1 )
-custom_fonts/font = ExtResource( 8 )
-text = "Oscar Mastrapa Prats (3D)"
+[node name="button_back" type="TextureButton" parent="credits_screeen"]
+margin_left = 30.0
+margin_top = 28.0
+margin_right = 97.0
+margin_bottom = 76.0
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource( 2 )
+expand = true
+stretch_mode = 5
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Margen/Panel/Margen/VBoxContainer2"]
-margin_top = 508.0
-margin_right = 1246.0
-margin_bottom = 708.0
-size_flags_vertical = 8
-
-[node name="Godot" type="TextureRect" parent="Margen/Panel/Margen/VBoxContainer2/HBoxContainer"]
-margin_right = 246.0
-margin_bottom = 200.0
-rect_min_size = Vector2( 200, 200 )
-size_flags_horizontal = 3
-texture = ExtResource( 6 )
+[node name="cnoaraul_logo" type="TextureRect" parent="credits_screeen"]
+margin_left = 975.0
+margin_top = 247.0
+margin_right = 1152.0
+margin_bottom = 429.0
+texture = ExtResource( 20 )
 expand = true
 stretch_mode = 6
 
-[node name="GodotDocs" type="TextureRect" parent="Margen/Panel/Margen/VBoxContainer2/HBoxContainer"]
-margin_left = 250.0
-margin_right = 496.0
-margin_bottom = 200.0
-rect_min_size = Vector2( 200, 200 )
-size_flags_horizontal = 3
-texture = ExtResource( 3 )
-expand = true
-stretch_mode = 6
+[node name="social_list" type="HBoxContainer" parent="credits_screeen"]
+margin_left = 1017.0
+margin_top = 451.0
+margin_right = 1067.0
+margin_bottom = 491.0
+custom_constants/separation = 50
 
-[node name="Inkscape" type="TextureRect" parent="Margen/Panel/Margen/VBoxContainer2/HBoxContainer"]
-margin_left = 500.0
-margin_right = 746.0
-margin_bottom = 200.0
-rect_min_size = Vector2( 200, 200 )
-size_flags_horizontal = 3
-texture = ExtResource( 5 )
-expand = true
-stretch_mode = 6
+[node name="itm" type="Control" parent="credits_screeen/social_list"]
+margin_bottom = 40.0
 
-[node name="Gimp" type="TextureRect" parent="Margen/Panel/Margen/VBoxContainer2/HBoxContainer"]
-margin_left = 750.0
-margin_right = 996.0
-margin_bottom = 200.0
-rect_min_size = Vector2( 200, 200 )
-size_flags_horizontal = 3
+[node name="button_fb" type="TextureButton" parent="credits_screeen/social_list/itm"]
+margin_right = 37.0
+margin_bottom = 36.0
+texture_normal = ExtResource( 21 )
+expand = true
+stretch_mode = 5
+
+[node name="itm2" type="Control" parent="credits_screeen/social_list"]
+margin_left = 50.0
+margin_right = 50.0
+margin_bottom = 40.0
+
+[node name="button_twit" type="TextureButton" parent="credits_screeen/social_list/itm2"]
+margin_right = 37.0
+margin_bottom = 36.0
+texture_normal = ExtResource( 22 )
+expand = true
+stretch_mode = 5
+
+[node name="social_list_dariem" type="HBoxContainer" parent="credits_screeen"]
+margin_left = 807.0
+margin_top = 305.0
+margin_right = 857.0
+margin_bottom = 305.0
+custom_constants/separation = 50
+
+[node name="itm" type="Control" parent="credits_screeen/social_list_dariem"]
+
+[node name="button_fb" type="TextureButton" parent="credits_screeen/social_list_dariem/itm"]
+self_modulate = Color( 0.443137, 0, 1, 0.690196 )
+margin_left = -54.0
+margin_top = 132.0
+margin_right = -8.0
+margin_bottom = 172.0
+focus_mode = 0
+enabled_focus_mode = 0
+texture_normal = ExtResource( 21 )
+expand = true
+stretch_mode = 5
+
+[node name="itm2" type="Control" parent="credits_screeen/social_list_dariem"]
+margin_left = 50.0
+margin_right = 50.0
+
+[node name="button_twit" type="TextureButton" parent="credits_screeen/social_list_dariem/itm2"]
+self_modulate = Color( 0.443137, 0, 1, 0.690196 )
+margin_left = -43.0
+margin_top = 131.0
+margin_right = -3.0
+margin_bottom = 173.0
+texture_normal = ExtResource( 22 )
+expand = true
+stretch_mode = 5
+
+[node name="burst_gaming_logo" type="TextureRect" parent="credits_screeen"]
+margin_left = 705.0
+margin_top = 240.0
+margin_right = 912.0
+margin_bottom = 410.0
 texture = ExtResource( 4 )
 expand = true
 stretch_mode = 6
 
-[node name="Blender" type="TextureRect" parent="Margen/Panel/Margen/VBoxContainer2/HBoxContainer"]
-margin_left = 1000.0
-margin_right = 1246.0
-margin_bottom = 200.0
-rect_min_size = Vector2( 200, 200 )
-size_flags_horizontal = 3
+[node name="Godot" type="TextureRect" parent="credits_screeen"]
+margin_left = 651.0
+margin_top = 565.0
+margin_right = 851.0
+margin_bottom = 718.0
 texture = ExtResource( 10 )
 expand = true
 stretch_mode = 6
 
-[connection signal="pressed" from="Margen/VBox/HBox/Jugar" to="." method="_on_Jugar_pressed"]
-[connection signal="pressed" from="Margen/VBox/HBox/Ver Creditos" to="." method="_on_Ver_Creditos_pressed"]
-[connection signal="pressed" from="Margen/VBox/HBox/Salir" to="." method="_on_Salir_pressed"]
-[connection signal="pressed" from="Margen/Panel/Margen/Atras" to="." method="_on_Atras_pressed"]
+[node name="Godot2" type="TextureRect" parent="credits_screeen"]
+margin_left = 835.0
+margin_top = 602.0
+margin_right = 898.0
+margin_bottom = 678.0
+texture = ExtResource( 6 )
+expand = true
+stretch_mode = 6
+
+[node name="Godot3" type="TextureRect" parent="credits_screeen"]
+margin_left = 930.0
+margin_top = 596.0
+margin_right = 1012.0
+margin_bottom = 689.0
+texture = ExtResource( 19 )
+expand = true
+stretch_mode = 6
+
+[node name="Godot4" type="TextureRect" parent="credits_screeen"]
+margin_left = 1030.0
+margin_top = 593.0
+margin_right = 1104.0
+margin_bottom = 681.0
+texture = ExtResource( 5 )
+expand = true
+stretch_mode = 6

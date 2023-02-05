@@ -1,11 +1,11 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://Personajes/Enemigos/Gusano/gusano.gd" type="Script" id=1]
-[ext_resource path="res://Personajes/enemy_gusano/Material_001.material" type="Material" id=2]
+[ext_resource path="res://Personajes/Enemigos/Gusano/Material_001.material" type="Material" id=2]
 
-[sub_resource type="CapsuleShape" id=1]
-radius = 0.809838
-height = 3.18557
+[sub_resource type="CapsuleShape" id=45]
+radius = 0.975552
+height = 0.594224
 
 [sub_resource type="ArrayMesh" id=40]
 resource_name = "worm_enemy_Plano"
@@ -50,9 +50,25 @@ bind/7/name = "Bone.007"
 bind/7/bone = -1
 bind/7/pose = Transform( -1.4013e-45, 1, -3.13916e-07, -1, -4.93601e-08, 1.65048e-09, 0, 3.15349e-07, 1, -0.00446728, -2.30357, 5.32929e-08 )
 
+[sub_resource type="Animation" id=44]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("../ataque/CollisionShape:disabled")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
+
 [sub_resource type="Animation" id=4]
 resource_name = "attack"
 length = 0.9
+step = 0.05
 tracks/0/type = "transform"
 tracks/0/path = NodePath("Esqueleto/Skeleton:Bone.007")
 tracks/0/interp = 1
@@ -102,6 +118,18 @@ tracks/6/loop_wrap = true
 tracks/6/imported = false
 tracks/6/enabled = true
 tracks/6/keys = PoolRealArray( 0.9, 1, 0, 0, 0, 0, 0, -2.48923e-15, 1, 1, 1, 1 )
+tracks/7/type = "value"
+tracks/7/path = NodePath("../ataque/CollisionShape:disabled")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0.65 ),
+"transitions": PoolRealArray( 1 ),
+"update": 2,
+"values": [ false ]
+}
 
 [sub_resource type="Animation" id=3]
 resource_name = "caminar"
@@ -286,20 +314,20 @@ tracks/7/enabled = true
 tracks/7/keys = PoolRealArray( 0, 1, 0, 0, 0, 7.10543e-15, 1.28987e-28, 1.81533e-14, 1, 1, 1, 1 )
 
 [sub_resource type="CapsuleShape" id=13]
-radius = 0.417917
-height = 2.31607
+radius = 0.470933
+height = 3.64461
 
-[sub_resource type="CylinderShape" id=21]
-height = 5.51781
-radius = 2.56467
+[sub_resource type="CapsuleShape" id=43]
+radius = 0.628805
+height = 2.0191
 
 [sub_resource type="CylinderShape" id=22]
-height = 8.59036
-radius = 15.3787
+height = 0.762866
+radius = 6.91557
 
 [sub_resource type="CylinderShape" id=23]
-height = 5.51781
-radius = 2.56467
+height = 0.888107
+radius = 3.36563
 
 [sub_resource type="AnimationNodeAnimation" id=24]
 animation = "caminar"
@@ -336,25 +364,25 @@ nodes/ataque/position = Vector2( 640, 53.3333 )
 nodes/output/position = Vector2( 933.333, 53.3333 )
 nodes/rc_blend/node = SubResource( 38 )
 nodes/rc_blend/position = Vector2( 426.667, 26.6667 )
-node_connections = [ "output", 0, "ataque", "ataque", 0, "rc_blend", "ataque", 1, "Animation 3", "TimeScale", 0, "Animation", "TimeScale 2", 0, "Animation 2", "rc_blend", 0, "TimeScale", "rc_blend", 1, "TimeScale 2" ]
+node_connections = [ "output", 0, "ataque", "ataque", 0, "rc_blend", "ataque", 1, "Animation 3", "rc_blend", 0, "TimeScale", "rc_blend", 1, "TimeScale 2", "TimeScale", 0, "Animation", "TimeScale 2", 0, "Animation 2" ]
 
 [node name="gusano" type="KinematicBody"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.607, 0 )
 collision_layer = 64
 collision_mask = 31
 script = ExtResource( 1 )
 
+[node name="agent" type="NavigationAgent" parent="."]
+
 [node name="CollisionShape" type="CollisionShape" parent="."]
-transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 1.43776, 0 )
-visible = false
-shape = SubResource( 1 )
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 1.04065, 1.21489 )
+shape = SubResource( 45 )
 
 [node name="mesh" type="Spatial" parent="."]
 
 [node name="Armature" type="Spatial" parent="mesh"]
 
 [node name="Esqueleto" type="Spatial" parent="mesh/Armature"]
-transform = Transform( -4.37114e-07, 0, 10, 0, 10, 0, -10, 0, -4.37114e-07, 0, -1.44251, 0 )
+transform = Transform( -1.31134e-07, 0, 3, 0, 3, 0, -3, 0, -1.31134e-07, 0, 0, 0 )
 
 [node name="Skeleton" type="Skeleton" parent="mesh/Armature/Esqueleto"]
 bones/0/name = "Bone"
@@ -399,56 +427,54 @@ bones/7/enabled = true
 bones/7/bound_children = [  ]
 
 [node name="Plano" type="MeshInstance" parent="mesh/Armature/Esqueleto/Skeleton"]
+portal_mode = 2
 mesh = SubResource( 40 )
 skin = SubResource( 2 )
 
 [node name="worm_anim" type="AnimationPlayer" parent="mesh/Armature"]
 autoplay = "idle"
+anims/RESET = SubResource( 44 )
 anims/attack = SubResource( 4 )
 anims/caminar = SubResource( 3 )
 anims/hit = SubResource( 5 )
 anims/idle = SubResource( 6 )
 
-[node name="ataque" type="Area" parent="."]
+[node name="ataque" type="Area" parent="mesh"]
 transform = Transform( -1, -3.45707e-06, -8.74228e-08, -2.20537e-06, 1, 1.76746e-15, 8.74228e-08, 3.00533e-13, -1, 8.9407e-06, -2.02656e-06, 3.72529e-09 )
-visible = false
 collision_layer = 128
-collision_mask = 16
+collision_mask = 4
 
-[node name="CollisionShape" type="CollisionShape" parent="ataque"]
-transform = Transform( 0.999325, -1.23804e-09, 0.036731, -1.48815e-09, 1, 8.10063e-08, -0.036731, -9.71993e-08, 0.999325, 0.0569194, 0.589529, -1.19655 )
+[node name="CollisionShape" type="CollisionShape" parent="mesh/ataque"]
+transform = Transform( 0.999325, -1.23804e-09, 0.036731, -1.48815e-09, 1, 8.10063e-08, -0.036731, -9.71993e-08, 0.999325, 0.0569994, 0.0887008, -5.30307 )
 shape = SubResource( 13 )
 
-[node name="damage" type="Area" parent="."]
-visible = false
+[node name="damage" type="Area" parent="mesh"]
 collision_layer = 256
 collision_mask = 8
 
-[node name="CollisionShape" type="CollisionShape" parent="damage"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.181, 0 )
-shape = SubResource( 21 )
+[node name="CollisionShape" type="CollisionShape" parent="mesh/damage"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0480612, 0, 1.39871 )
+shape = SubResource( 43 )
 
-[node name="persecution" type="Area" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.43623, 0 )
-visible = false
+[node name="persecution" type="Area" parent="mesh"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.43623, 4.95871 )
 collision_layer = 512
 collision_mask = 4
 
-[node name="CollisionShape" type="CollisionShape" parent="persecution"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.124935, 1.1869, 1.09222e-08 )
+[node name="CollisionShape" type="CollisionShape" parent="mesh/persecution"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.125, -1.23211, 0.212 )
 shape = SubResource( 22 )
 
-[node name="wander" type="Timer" parent="."]
-one_shot = true
-
-[node name="overlap" type="Area" parent="."]
-visible = false
+[node name="overlap" type="Area" parent="mesh"]
 collision_layer = 1024
 collision_mask = 64
 
-[node name="CollisionShape" type="CollisionShape" parent="overlap"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.24399, 0 )
+[node name="CollisionShape" type="CollisionShape" parent="mesh/overlap"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.00453353, 3.7171 )
 shape = SubResource( 23 )
+
+[node name="wander" type="Timer" parent="."]
+one_shot = true
 
 [node name="move" type="Timer" parent="."]
 wait_time = 0.7
@@ -461,7 +487,6 @@ one_shot = true
 [node name="AnimationTree" type="AnimationTree" parent="."]
 tree_root = SubResource( 39 )
 anim_player = NodePath("../mesh/Armature/worm_anim")
-active = true
 parameters/TimeScale/scale = 1.0
 "parameters/TimeScale 2/scale" = 1.0
 parameters/ataque/active = false
@@ -470,15 +495,16 @@ parameters/rc_blend/blend_amount = 0.0
 [node name="stun" type="Timer" parent="."]
 one_shot = true
 
-[node name="wait" type="Timer" parent="."]
-one_shot = true
-
 [node name="reset" type="Timer" parent="."]
 wait_time = 30.0
 
-[connection signal="area_entered" from="ataque" to="." method="_on_ataque_area_entered"]
-[connection signal="body_entered" from="persecution" to="." method="_on_persecution_body_entered"]
-[connection signal="body_exited" from="persecution" to="." method="_on_persecution_body_exited"]
+[node name="attack_timer" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+
+[connection signal="area_entered" from="mesh/ataque" to="." method="_on_ataque_area_entered"]
+[connection signal="body_entered" from="mesh/persecution" to="." method="_on_persecution_body_entered"]
+[connection signal="body_exited" from="mesh/persecution" to="." method="_on_persecution_body_exited"]
 [connection signal="timeout" from="wander" to="." method="_on_wander_timeout"]
 [connection signal="timeout" from="move" to="." method="_on_move_timeout"]
 [connection signal="timeout" from="seek" to="." method="_on_seek_timeout"]

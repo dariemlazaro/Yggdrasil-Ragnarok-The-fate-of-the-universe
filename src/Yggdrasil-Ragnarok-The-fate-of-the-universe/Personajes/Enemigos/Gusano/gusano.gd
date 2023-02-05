@@ -1,9 +1,8 @@
 extends KinematicBody
 
 #navigation
-#var path = []
-#var path_node = 0
-#onready var nav = get_parent().get_parent()
+
+onready var agent : NavigationAgent = $agent
 
 #end navigation
 
@@ -15,14 +14,14 @@ onready var target_position = global_transform.origin
 var wander_range = 20
 
 #nodos
-onready var damage_area = $damage
-onready var damage_col = $damage/CollisionShape
-onready var ataque_area = $mesh/esqueleto/mano_iz/atake_d/espada/ataque
-onready var ataque_col = $mesh/esqueleto/mano_iz/atake_d/espada/ataque/CollisionShape
-onready var overlap_area = $overlap
-onready var overlap_col = $overlap/CollisionShape
-onready var persecution_area = $persecution
-onready var persecution_col = $persecution/CollisionShape
+onready var damage_area = $mesh/damage
+onready var damage_col = $mesh/damage
+onready var ataque_area = $mesh/ataque
+onready var ataque_col = $mesh/ataque/CollisionShape
+onready var overlap_area = $mesh/overlap
+onready var overlap_col = $mesh/overlap/CollisionShape
+onready var persecution_area = $mesh/persecution
+onready var persecution_col = $mesh/persecution/CollisionShape
 onready var mesh = $mesh
 var player = null
 var thisplayer = null
@@ -31,8 +30,8 @@ onready var animation = $AnimationTree
 #valores
 var velocity = Vector3.ZERO
 var direction = Vector3.ZERO
-export (int) var movement_speed = 10
-export (int) var acceleration = 12
+export (int) var movement_speed = 4
+export (int) var acceleration = 6
 export (int) var angular_acceleration = 7
 export (int) var friction = 2
 
@@ -73,6 +72,8 @@ var state = IDLE
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	animation.active = true
+	#definir objetibo del navegacion
+	agent.set_target_location(target_position)
 	randomize()
 	gravity = 2 * max_jump_heigth / pow(jump_duration, 2)
 	max_jump_velocity = -jump_duration * gravity
@@ -92,45 +93,38 @@ func _physics_process(delta):
 				$wander.start(rand_range(1,5))
 		WANDER:
 			animation.set("parameters/rc_blend/blend_amount", lerp(animation.get("parameters/rc_blend/blend_amount"), 1, delta * acceleration))
-
 			persecution(delta)
-			movement_speed = 12
+			movement_speed = 5
+			#new navigation
+			var next = agent.get_next_location()
+			direction = (next - global_transform.origin)
 				#navigation
-			if path_node < path.size():
-				direction = (path[path_node] - global_transform.origin)
-
-				if direction.length() < 1:
-					path_node += 1
+			
 			if thisplayer == null and global_transform.origin.distance_to(first_position) >= wander_range + 4:
 				if $reset.is_stopped():
 					$reset.start()
-			elif $wander.time_left == 0 or global_transform.origin.distance_to(target_position) <= 2:
+			elif $wander.time_left == 0 or global_transform.origin.distance_to(target_position) <= 3:
 				state = pick_random_state([IDLE, WANDER])
 				$wander.start(rand_range(1,3))  			
 		CHASE:
 			animation.set("parameters/rc_blend/blend_amount", lerp(animation.get("parameters/rc_blend/blend_amount"), 1, delta * acceleration))
 			if thisplayer != null:
-				movement_speed = 12
-				#navigation
-				if path_node < path.size():
-					direction = (path[path_node] - global_transform.origin)
-
-					if direction.length() < 1:
-						path_node += 1
-				if global_transform.origin.distance_to(thisplayer.global_transform.origin) <= 4:
+				movement_speed = 5
+				var next = agent.get_next_location()
+				direction = (next - global_transform.origin)
+				if global_transform.origin.distance_to(thisplayer.global_transform.origin) <= 4 and $attack_timer.is_stopped():
 					state = ATTACK
 
 			else:
 				movement_speed = 0
 				state = IDLE
 
-
 		ATTACK:
 
 			movement_speed = 0
 			if animation.get("parameters/ataque/active") == false:
 				animation.set("parameters/ataque/active", true)
-				$wait.start()
+				$attack_timer.start()
 				state = CHASE
 		DEAD:
 			velocity = Vector3.ZERO
@@ -145,8 +139,8 @@ func _physics_process(delta):
 
 	velocity = lerp(velocity , direction.normalized() * movement_speed, delta * friction * acceleration)
 	velocity = move_and_slide(velocity + Vector3.DOWN * vertical_velocity, Vector3.UP)
-	if $wait.time_left == 0:
-		mesh.rotation.y = lerp_angle(mesh.rotation.y, atan2(direction.x, direction.z), delta * angular_acceleration)
+
+	mesh.rotation.y = lerp_angle(mesh.rotation.y, atan2(direction.x, direction.z), delta * angular_acceleration)
 
 	if !is_on_floor():
 		vertical_velocity += gravity * delta
@@ -156,8 +150,7 @@ func _physics_process(delta):
 
 
 func move_to(target_pos):
-	path = nav.get_simple_path(global_transform.origin, target_pos)
-	path_node = 0
+	agent.set_target_location(target_pos)
 	
 func persecution(_delta):
 	if can_see_player():
