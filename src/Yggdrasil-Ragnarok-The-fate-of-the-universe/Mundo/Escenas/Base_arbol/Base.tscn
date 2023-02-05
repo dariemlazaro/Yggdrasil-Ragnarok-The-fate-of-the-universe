@@ -1,10 +1,15 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Mundo/Escenas/Base_arbol/base.gd" type="Script" id=1]
 [ext_resource path="res://Mundo/RoomManager.gd" type="Script" id=2]
 [ext_resource path="res://HUD/demo_dlc_hud.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Mundo/Escenas/Base_arbol/base arbol.tscn" type="PackedScene" id=4]
+[ext_resource path="res://HUD/base.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Personajes/Jugador/Jugador.tscn" type="PackedScene" id=21]
+
+[sub_resource type="CylinderShape" id=1]
+height = 30.7663
+radius = 16.9328
 
 [node name="Base" type="Spatial"]
 script = ExtResource( 1 )
@@ -18,8 +23,9 @@ script = ExtResource( 2 )
 
 [node name="base arbol" parent="rooms" instance=ExtResource( 4 )]
 
-[node name="Player" parent="." instance=ExtResource( 21 )]
+[node name="Player" parent="." groups=["players"] instance=ExtResource( 21 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.268737, 4.22192, 14.4239 )
+collision_mask = 3
 
 [node name="Playerpos" type="Spatial" parent="."]
 
@@ -33,3 +39,16 @@ layer = 2
 
 [node name="Camera" type="Camera" parent="."]
 transform = Transform( 0.995314, 0, -0.096697, 0, 1, 0, 0.096697, 0, 0.995314, 18.222, 10.3372, -7.89182 )
+
+[node name="base" parent="." instance=ExtResource( 5 )]
+
+[node name="Area" type="Area" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 342.917, -0.301033, -13.1811 )
+collision_layer = 2
+collision_mask = 4
+
+[node name="CollisionShape" type="CollisionShape" parent="Area"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.82846, 9.13116, 19.5532 )
+shape = SubResource( 1 )
+
+[connection signal="body_entered" from="Area" to="." method="_on_Area_body_entered"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Presentacion/ggj23_twitter_header_1500x500px.jpg" type="Texture" id=1]
 [ext_resource path="res://Presentacion/Presentacion.gd" type="Script" id=2]
@@ -11,132 +11,9 @@
 [ext_resource path="res://Recursos/Fuentes/AlternateGothicExCondATF-Bold.otf" type="DynamicFontData" id=10]
 [ext_resource path="res://Presentacion/mandodetalle.svg" type="Texture" id=11]
 
-[sub_resource type="Animation" id=4]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/path = NodePath("ColorRect:color")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Color( 0, 0, 0, 1 ) ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("MarginContainer/CenterContainer/mando:rect_scale")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Vector2( 1, 1 ) ]
-}
-tracks/2/type = "value"
-tracks/2/path = NodePath("MarginContainer/CenterContainer/mando/detalle:rect_scale")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Vector2( 1, 1 ) ]
-}
-tracks/3/type = "value"
-tracks/3/path = NodePath("MarginContainer/CenterContainer/mando/cruceta:rect_rotation")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ 720.0 ]
-}
-tracks/4/type = "value"
-tracks/4/path = NodePath("MarginContainer/CenterContainer/mando/ceja izq:rect_size")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Vector2( 66.0001, 38 ) ]
-}
-tracks/5/type = "value"
-tracks/5/path = NodePath("MarginContainer/CenterContainer/mando/ceja der:rect_position")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Vector2( 564, 123 ) ]
-}
-tracks/6/type = "value"
-tracks/6/path = NodePath("Label:rect_position")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Vector2( -700, 544 ) ]
-}
-tracks/7/type = "value"
-tracks/7/path = NodePath("MarginContainer/CenterContainer/mando:rect_pivot_offset")
-tracks/7/interp = 1
-tracks/7/loop_wrap = true
-tracks/7/imported = false
-tracks/7/enabled = true
-tracks/7/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Vector2( 309, 80 ) ]
-}
-tracks/8/type = "value"
-tracks/8/path = NodePath("MarginContainer/CenterContainer/mando:rect_rotation")
-tracks/8/interp = 1
-tracks/8/loop_wrap = true
-tracks/8/imported = false
-tracks/8/enabled = true
-tracks/8/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ 0.0 ]
-}
-tracks/9/type = "value"
-tracks/9/path = NodePath("Label:rect_rotation")
-tracks/9/interp = 1
-tracks/9/loop_wrap = true
-tracks/9/imported = false
-tracks/9/enabled = true
-tracks/9/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ 15.3879 ]
-}
-
 [sub_resource type="Animation" id=1]
 resource_name = "fade"
-length = 30.0
+length = 18.0
 step = 0.005
 tracks/0/type = "value"
 tracks/0/path = NodePath("MarginContainer/CenterContainer/mando:modulate")
@@ -145,7 +22,7 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 12, 12.75, 19, 21 ),
+"times": PoolRealArray( 12, 12.75, 15.635, 17.635 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 0,
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
@@ -181,7 +58,7 @@ tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
-"times": PoolRealArray( 0, 12, 21.5 ),
+"times": PoolRealArray( 0, 12, 18.135 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 1,
 "values": [ false, true, false ]
@@ -193,7 +70,7 @@ tracks/4/loop_wrap = true
 tracks/4/imported = false
 tracks/4/enabled = true
 tracks/4/keys = {
-"times": PoolRealArray( 12, 12.75, 19, 21 ),
+"times": PoolRealArray( 12, 12.75, 16.065, 16.95 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 0,
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
@@ -229,7 +106,7 @@ tracks/7/loop_wrap = true
 tracks/7/imported = false
 tracks/7/enabled = true
 tracks/7/keys = {
-"times": PoolRealArray( 0, 12, 25.5 ),
+"times": PoolRealArray( 0, 12, 17.63 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 1,
 "values": [ false, true, false ]
@@ -241,10 +118,10 @@ tracks/8/loop_wrap = true
 tracks/8/imported = false
 tracks/8/enabled = true
 tracks/8/keys = {
-"times": PoolRealArray( 0, 12 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PoolRealArray( 0, 12, 17.64 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
 "update": 1,
-"values": [ false, true ]
+"values": [ false, true, false ]
 }
 tracks/9/type = "value"
 tracks/9/path = NodePath("ColorRect:color")
@@ -253,7 +130,7 @@ tracks/9/loop_wrap = true
 tracks/9/imported = false
 tracks/9/enabled = true
 tracks/9/keys = {
-"times": PoolRealArray( 22 ),
+"times": PoolRealArray( 17.805 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
 "values": [ Color( 0, 0, 0, 1 ) ]
@@ -277,7 +154,7 @@ tracks/11/loop_wrap = true
 tracks/11/imported = false
 tracks/11/enabled = true
 tracks/11/keys = {
-"times": PoolRealArray( 11, 17, 18, 21.5 ),
+"times": PoolRealArray( 11, 13.46, 14.46, 17.845 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 0,
 "values": [ 0.0, 0.0, 720.0, 720.0 ]
@@ -289,7 +166,7 @@ tracks/12/loop_wrap = true
 tracks/12/imported = false
 tracks/12/enabled = true
 tracks/12/keys = {
-"times": PoolRealArray( 11, 17, 17.2, 17.5, 17.7, 18, 21.5 ),
+"times": PoolRealArray( 11, 13.46, 13.66, 13.96, 14.16, 14.46, 17.845 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
 "update": 0,
 "values": [ Vector2( 344, 120 ), Vector2( 344, 120 ), Vector2( 346, 104 ), Vector2( 344, 120 ), Vector2( 346, 104 ), Vector2( 344, 120 ), Vector2( 344, 120 ) ]
@@ -301,7 +178,7 @@ tracks/13/loop_wrap = true
 tracks/13/imported = false
 tracks/13/enabled = true
 tracks/13/keys = {
-"times": PoolRealArray( 11, 17, 17.2, 17.5, 17.7, 18, 21.5 ),
+"times": PoolRealArray( 11, 13.46, 13.66, 13.96, 14.16, 14.46, 18.475 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
 "update": 0,
 "values": [ Vector2( 564, 123 ), Vector2( 564, 123 ), Vector2( 566, 107 ), Vector2( 564, 123 ), Vector2( 566, 107 ), Vector2( 564, 123 ), Vector2( 564, 123 ) ]
@@ -313,46 +190,34 @@ tracks/14/loop_wrap = true
 tracks/14/imported = false
 tracks/14/enabled = true
 tracks/14/keys = {
-"times": PoolRealArray( 11, 12.75, 13, 13.1, 13.3, 13.355, 13.37, 13.385, 13.41, 13.5 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"times": PoolRealArray( 11, 12.75, 12.975 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
-"values": [ Vector2( -700, 544 ), Vector2( -700, 544 ), Vector2( 396, 544 ), Vector2( 430, 544 ), Vector2( 446.375, 544 ), Vector2( 435.375, 544 ), Vector2( 435.375, 544 ), Vector2( 438.14, 544 ), Vector2( 416.067, 544 ), Vector2( 286, 544 ) ]
+"values": [ Vector2( -700, 544 ), Vector2( -700, 544 ), Vector2( 286, 544 ) ]
 }
 tracks/15/type = "value"
-tracks/15/path = NodePath("Label:rect_rotation")
+tracks/15/path = NodePath("MarginContainer/CenterContainer/mando:rect_pivot_offset")
 tracks/15/interp = 1
 tracks/15/loop_wrap = true
 tracks/15/imported = false
 tracks/15/enabled = true
 tracks/15/keys = {
-"times": PoolRealArray( 12.6, 13, 13.3, 13.5, 13.54 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"times": PoolRealArray( 11.9, 12.95 ),
+"transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ 0.0, 0.0, 13.2235, 0.0, 0.0 ]
+"values": [ Vector2( 0, 0 ), Vector2( 0, 0 ) ]
 }
 tracks/16/type = "value"
-tracks/16/path = NodePath("MarginContainer/CenterContainer/mando:rect_pivot_offset")
+tracks/16/path = NodePath("Label:modulate")
 tracks/16/interp = 1
 tracks/16/loop_wrap = true
 tracks/16/imported = false
 tracks/16/enabled = true
 tracks/16/keys = {
-"times": PoolRealArray( 11.9, 12.95, 12.985, 13.09 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"times": PoolRealArray( 0.01, 16.035, 17.035 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
-"values": [ Vector2( 0, 0 ), Vector2( 0, 0 ), Vector2( 309, 80 ), Vector2( 309, 80 ) ]
-}
-tracks/17/type = "value"
-tracks/17/path = NodePath("MarginContainer/CenterContainer/mando:rect_rotation")
-tracks/17/interp = 1
-tracks/17/loop_wrap = true
-tracks/17/imported = false
-tracks/17/enabled = true
-tracks/17/keys = {
-"times": PoolRealArray( 11.9, 12.985, 13.005, 13.3, 13.5 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
-"update": 0,
-"values": [ 0.0, 0.0, -5.5, -20.0, 0.0 ]
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
 }
 
 [sub_resource type="DynamicFont" id=3]
@@ -390,6 +255,8 @@ size_flags_horizontal = 7
 size_flags_vertical = 7
 
 [node name="TextureRect" type="TextureRect" parent="MarginContainer"]
+visible = false
+modulate = Color( 1, 1, 1, 0.00231171 )
 margin_right = 1366.0
 margin_bottom = 768.0
 grow_horizontal = 2
@@ -402,8 +269,7 @@ expand = true
 stretch_mode = 2
 
 [node name="ggj" type="TextureRect" parent="MarginContainer"]
-visible = false
-modulate = Color( 1, 1, 1, 0 )
+modulate = Color( 1, 1, 1, 0.000424147 )
 margin_right = 1366.0
 margin_bottom = 768.0
 texture = ExtResource( 1 )
@@ -423,7 +289,6 @@ __meta__ = {
 }
 
 [node name="Logo2" type="TextureRect" parent="MarginContainer/CenterContainer"]
-visible = false
 modulate = Color( 1, 1, 1, 0 )
 margin_left = 283.0
 margin_top = 234.0
@@ -438,6 +303,8 @@ texture = ExtResource( 4 )
 stretch_mode = 6
 
 [node name="mando" type="TextureRect" parent="MarginContainer/CenterContainer"]
+visible = false
+modulate = Color( 1, 1, 1, 0.00231171 )
 margin_left = 171.0
 margin_top = 84.0
 margin_right = 1195.0
@@ -445,7 +312,6 @@ margin_bottom = 684.0
 grow_horizontal = 2
 grow_vertical = 2
 rect_min_size = Vector2( 1024, 600 )
-rect_pivot_offset = Vector2( 309, 80 )
 size_flags_horizontal = 7
 size_flags_vertical = 7
 texture = ExtResource( 9 )
@@ -472,7 +338,6 @@ margin_right = 680.0
 margin_bottom = 245.0
 grow_horizontal = 2
 grow_vertical = 2
-rect_rotation = 720.0
 rect_pivot_offset = Vector2( 38, 39 )
 size_flags_horizontal = 6
 size_flags_vertical = 6
@@ -484,7 +349,7 @@ stretch_mode = 5
 margin_left = 564.0
 margin_top = 123.0
 margin_right = 621.0
-margin_bottom = 158.0
+margin_bottom = 157.999
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 6
@@ -504,15 +369,14 @@ stretch_mode = 5
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "fade"
-anims/RESET = SubResource( 4 )
 anims/fade = SubResource( 1 )
 
 [node name="Label" type="Label" parent="."]
+visible = false
 margin_left = -700.0
 margin_top = 544.0
 margin_right = -201.0
 margin_bottom = 648.0
-rect_rotation = 15.3879
 rect_pivot_offset = Vector2( 467, 39 )
 size_flags_horizontal = 6
 size_flags_vertical = 0

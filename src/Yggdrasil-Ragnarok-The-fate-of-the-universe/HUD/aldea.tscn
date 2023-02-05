@@ -1,0 +1,297 @@
+[gd_scene load_steps=17 format=2]
+
+[ext_resource path="res://Recursos/Fuentes/general_ui/LeagueSpartan-Regular.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://Recursos/Fuentes/general_ui/Megrim.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://HUD/cuadro de dialogo1.png" type="Texture" id=3]
+[ext_resource path="res://HUD/aldea.gd" type="Script" id=4]
+[ext_resource path="res://Recursos/Fuentes/general_ui/LeagueSpartan-SemiBold.ttf" type="DynamicFontData" id=5]
+[ext_resource path="res://HUD/intro_assets/intro2.png" type="Texture" id=6]
+[ext_resource path="res://HUD/intro_assets/pngwing.com.png" type="Texture" id=7]
+
+[sub_resource type="StyleBoxTexture" id=4]
+texture = ExtResource( 3 )
+region_rect = Rect2( 0, 0, 920, 244 )
+margin_left = 60.0
+margin_right = 64.0
+margin_top = 84.0
+margin_bottom = 64.0
+
+[sub_resource type="DynamicFont" id=2]
+size = 30
+use_filter = true
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=11]
+size = 25
+use_filter = true
+font_data = ExtResource( 5 )
+
+[sub_resource type="DynamicFont" id=10]
+size = 25
+use_filter = true
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=7]
+size = 61
+outline_size = 1
+outline_color = Color( 0.596078, 0.631373, 0.686275, 1 )
+use_filter = true
+font_data = ExtResource( 2 )
+
+[sub_resource type="Animation" id=9]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("bg:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("bg_exit:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("bg_exit:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=8]
+resource_name = "enter"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("bg/title:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("bg/title:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.8, 2, 2.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("bg:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 2.4, 3 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("bg_exit:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("bg_exit:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ) ]
+}
+
+[sub_resource type="Animation" id=12]
+resource_name = "exit_dialog"
+tracks/0/type = "value"
+tracks/0/path = NodePath("bg_exit:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("bg_exit:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=6]
+resource_name = "new_dial"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/path = NodePath("ui/container/dialog_window_bottom/text:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[node name="aldea" type="Node"]
+script = ExtResource( 4 )
+
+[node name="ui" type="CanvasLayer" parent="."]
+
+[node name="background" type="Sprite" parent="ui"]
+visible = false
+position = Vector2( 750.25, 636.25 )
+scale = Vector2( 1.79805, 1.92292 )
+texture = ExtResource( 6 )
+
+[node name="Sprite" type="Sprite" parent="ui"]
+visible = false
+position = Vector2( 347, 456 )
+texture = ExtResource( 7 )
+
+[node name="container" type="Control" parent="ui"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+
+[node name="dialog_window_bottom" type="Panel" parent="ui/container"]
+visible = false
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -472.0
+margin_top = -283.0
+margin_right = 478.0
+margin_bottom = 3.0
+custom_styles/panel = SubResource( 4 )
+
+[node name="char_name" type="Label" parent="ui/container/dialog_window_bottom"]
+margin_left = 177.0
+margin_top = 21.0
+margin_right = 420.0
+margin_bottom = 72.0
+custom_colors/font_color = Color( 1, 0.823529, 0.270588, 1 )
+custom_fonts/font = SubResource( 2 )
+valign = 1
+
+[node name="text" type="RichTextLabel" parent="ui/container/dialog_window_bottom"]
+modulate = Color( 1, 1, 1, 0 )
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -374.0
+margin_top = -52.0
+margin_right = 370.0
+margin_bottom = 37.0
+custom_colors/default_color = Color( 0, 0, 0, 1 )
+custom_fonts/bold_font = SubResource( 11 )
+custom_fonts/normal_font = SubResource( 10 )
+bbcode_enabled = true
+
+[node name="chapter_tansition" type="Control" parent="ui"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="bg" type="ColorRect" parent="ui/chapter_tansition"]
+visible = false
+modulate = Color( 1, 1, 1, 0 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="title" type="Label" parent="ui/chapter_tansition/bg"]
+modulate = Color( 1, 1, 1, 0 )
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -493.0
+margin_top = -86.0
+margin_right = 493.0
+margin_bottom = 86.0
+custom_colors/font_color = Color( 0.6, 0.635294, 0.690196, 1 )
+custom_fonts/font = SubResource( 7 )
+text = "Comienza el entrenamiento"
+align = 1
+valign = 1
+autowrap = true
+
+[node name="transition_anim" type="AnimationPlayer" parent="ui/chapter_tansition"]
+autoplay = "enter"
+anims/RESET = SubResource( 9 )
+anims/enter = SubResource( 8 )
+anims/exit_dialog = SubResource( 12 )
+
+[node name="bg_exit" type="ColorRect" parent="ui/chapter_tansition"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="dialog_anim" type="AnimationPlayer" parent="."]
+anims/new_dial = SubResource( 6 )
+
+[connection signal="animation_finished" from="ui/chapter_tansition/transition_anim" to="." method="_on_transition_anim_animation_finished"]
+[connection signal="animation_finished" from="dialog_anim" to="." method="_on_dialog_anim_animation_finished"]

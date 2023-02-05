@@ -1,27 +1,19 @@
 [gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Global/Global.gd" type="Script" id=1]
-[ext_resource path="res://Global/Game Boy Advance - Shining Force Resurrection of the Dark Dragon - Wyvern.png" type="Texture" id=2]
+[ext_resource path="res://HUD/intro_assets/intro_background_tree.png" type="Texture" id=2]
 [ext_resource path="res://HUD/ScreenButtons/TouchButtons.tscn" type="PackedScene" id=3]
 
 [sub_resource type="AtlasTexture" id=2]
-flags = 4
-atlas = ExtResource( 2 )
 region = Rect2( 0, 0, 107, 111 )
 
 [sub_resource type="AtlasTexture" id=3]
-flags = 4
-atlas = ExtResource( 2 )
 region = Rect2( 107, 0, 107, 111 )
 
 [sub_resource type="AtlasTexture" id=4]
-flags = 4
-atlas = ExtResource( 2 )
 region = Rect2( 214, 0, 107, 111 )
 
 [sub_resource type="AtlasTexture" id=5]
-flags = 4
-atlas = ExtResource( 2 )
 region = Rect2( 321, 0, 107, 111 )
 
 [sub_resource type="SpriteFrames" id=1]
@@ -57,24 +49,19 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Fondo" type="ColorRect" parent="Loading/Control"]
+[node name="Fondo" type="TextureRect" parent="Loading/Control"]
 visible = false
-margin_right = 1366.0
-margin_bottom = 768.0
+anchor_right = 1.0
+anchor_bottom = 1.0
 rect_min_size = Vector2( 1366, 768 )
 mouse_filter = 2
-color = Color( 0, 0, 0, 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
+texture = ExtResource( 2 )
+expand = true
 
 [node name="MarginContainer" type="MarginContainer" parent="Loading/Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="CenterContainer" type="CenterContainer" parent="Loading/Control/MarginContainer"]
 margin_top = 568.0

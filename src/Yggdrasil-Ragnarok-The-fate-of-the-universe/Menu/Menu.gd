@@ -24,7 +24,7 @@ func _ready():
 
 
 func _on_Jugar_pressed():
-	Global.goto_scene("res://Mundo/Principal.tscn")
+	Global.goto_scene("res://HUD/intro_dialog.tscn")
 	Global.player_pos = 0
 	Global.noche = true
 	Global.dia = false

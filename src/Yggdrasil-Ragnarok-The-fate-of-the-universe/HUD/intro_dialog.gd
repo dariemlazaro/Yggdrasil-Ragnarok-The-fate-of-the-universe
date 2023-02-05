@@ -9,7 +9,7 @@ var intro_text=[
 "Sus desechos contaminan todo a su paso incluido el propio Yggdrasil.",
 "Los mismísimos dioses discuten en sus salones sagrados y las asperezas se acumulan.",
 "Fenrir, el lobo gigante es rechazado en el salón celestial y la rabia se apodera de él.",
-"Se decide a destruir todos y a todos. Se dirige al pozo de Urd, fuente de las aguas curativas que usan las nornas para sanar las raíces del gran fresno, y se apoderá del lugar causando la muerte de varias nornas que trataron de defender el pozo.",
+"Se decide a destruir todos y a todos. Se dirige al pozo de Urd, fuente de las aguas curativas que usan las nornas para sanar las raíces del gran fresno, y se apoderá del lugar causando la muerte de varias nornas que trataron de defenderlo.",
 "La nieve empieza a derretirse anunciando el fin del invierno y la llegada de la primavera, pero…"]
 
 
@@ -42,7 +42,7 @@ func sayD():
 
 func endConversation():
 	# Al finalizar con el dialogo se procede a jugar o a la accion que se haga
-	get_tree().change_scene("res://HUD/escena2_dialog.tscn")
+	Global.goto_scene("res://HUD/escena2_dialog.tscn")
 	pass
 
 

@@ -6,7 +6,7 @@ extends Node
 
 var operating=false
 var speaking=false
-var dialogos=["A ver el precio...","¿¡ 1200 MONEDAS !?","Ni q estuviera fresco","Seguro lo traen de un río estancado de por ahí"]
+var dialogos=["Vamos a empezar tu entrenamiento. Busca unos maniquies y atacalos hasta que mueran."]
 
 
 func startDialog():
@@ -53,7 +53,7 @@ func _input(_event):
 
 func _ready():
 	#Comienza la escenaa
-	3#startDialog()
+	#startDialog()
 	
 	pass
 

@@ -11,6 +11,7 @@ func _on_Area_area_entered(_area):
 		count = count + 1
 	else:
 		$Area/CollisionShape.disabled = true
+		get_parent().get_parent().get_parent().get_parent().get_parent().count+=1
 		$dead.start()
 
 

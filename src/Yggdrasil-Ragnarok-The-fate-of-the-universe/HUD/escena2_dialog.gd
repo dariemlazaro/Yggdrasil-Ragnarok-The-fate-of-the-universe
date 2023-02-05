@@ -97,8 +97,11 @@ func sayD():
 
 func endConversation():
 	# Al finalizar con el dialogo se procede a jugar o a la accion que se haga
+	
 	$ui/container/dialog_window_bottom.set_visible(false)
 	$ui/chapter_tansition/transition_anim.play("exit_dialog")
+	
+	
 	pass
 
 
@@ -112,7 +115,7 @@ func _input(_event):
 
 func endScene():
 	# Se termina el dialogo y se procede a jugar
-	
+	Global.goto_scene("res://HUD/batalla.tscn")
 	pass
 
 
