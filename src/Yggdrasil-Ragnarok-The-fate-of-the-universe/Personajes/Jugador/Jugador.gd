@@ -123,6 +123,7 @@ func moviendo(delta):
 			corria = false
 		
 	if (Input.is_action_pressed("adelante") || Input.is_action_pressed("atras") || Input.is_action_pressed("izquierda") || Input.is_action_pressed("derecha")) and animation.get("parameters/ataque/active") == false:
+		
 		friction = 1
 		if !firstmove:
 			firstmove = true

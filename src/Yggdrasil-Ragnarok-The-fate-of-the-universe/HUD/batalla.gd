@@ -5,7 +5,7 @@ export var speaking=false
 var intro_text=[
 "Odín llega a los cimientos del Yggdrasil.",
 "Cabalga hasta el pozo de Urd donde encuentra a Fenrir.",
-"la batalla fué épica. Dos dioses se enfrentaron en una lucha sin cuartel.",
+"La batalla fué épica. Dos dioses se enfrentaron en una lucha sin cuartel.",
 "Pero el destino es incierto y Fenrir resulta ser más poderoso que Odín quien se desvanece a la sombra del Yggdrasil.",
 "Los dioses ofrecen el ojo restante de Odín al Águila anónima para obtener respuestas de como sobrevivir al Ragnarok.",
 "La respuesta fue inesperada.",
@@ -24,8 +24,28 @@ func startDialog():
 
 
 func dialog_counter():
+	if intro_text.size()==10:
+		$horse.play()
+	if intro_text.size()==9:
+		$horse.stop()
+		$AnimationPlayer.play("fadeaudio")
+		$enfasis2.play()
+	if intro_text.size()==8:
+		$dead.play()
+		$thunder.play()
+		
+	if intro_text.size()==7:
+		$AnimationPlayer.play("fadeaudio2")
+		$enfasis3.play()
 	if intro_text.size()==6:
+		$enfasis3.play()
 		$ui/trans_container/trans_anim.play("exit_slow")
+	if intro_text.size()==4:
+		$enfasis4.play()
+		$gallinas.play()
+	if intro_text.size()==2:
+		$enfasis4.stop()
+		$gallinas.stop()
 	if intro_text.size()==1:
 		$ui/trans_container/trans_anim.play("enter")
 	pass
@@ -78,4 +98,11 @@ func _on_trans_anim_animation_finished(anim_name):
 	if anim_name=="enter":
 		
 		pass
+	pass # Replace with function body.
+	
+func _on_AnimationPlayer_animation_finished(anim_name):
+	if anim_name == "fadeaudio":
+		$enfasis.stop()
+	elif anim_name == "fadeaudio2":
+		$enfasis2.stop()
 	pass # Replace with function body.

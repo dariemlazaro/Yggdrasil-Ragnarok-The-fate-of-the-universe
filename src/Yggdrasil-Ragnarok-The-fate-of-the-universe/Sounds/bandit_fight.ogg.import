@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/bandit_fight.ogg-dc568a78ffdde28d1195b3abe29aa300.oggstr"
+
+[deps]
+
+source_file="res://Sounds/bandit_fight.ogg"
+dest_files=[ "res://.import/bandit_fight.ogg-dc568a78ffdde28d1195b3abe29aa300.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

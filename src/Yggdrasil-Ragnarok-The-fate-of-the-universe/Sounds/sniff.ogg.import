@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/sniff.ogg-e81fc15eb7a12f5e0c48dc77383bb751.oggstr"
+
+[deps]
+
+source_file="res://Sounds/sniff.ogg"
+dest_files=[ "res://.import/sniff.ogg-e81fc15eb7a12f5e0c48dc77383bb751.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

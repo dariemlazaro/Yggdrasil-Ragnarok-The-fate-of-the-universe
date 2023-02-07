@@ -9,7 +9,9 @@ var intro_text=[
 "Sus desechos contaminan todo a su paso incluido el propio Yggdrasil.",
 "Los mismísimos dioses discuten en sus salones sagrados y las asperezas se acumulan.",
 "Fenrir, el lobo gigante es rechazado en el salón celestial y la rabia se apodera de él.",
-"Se decide a destruir todos y a todos. Se dirige al pozo de Urd, fuente de las aguas curativas que usan las nornas para sanar las raíces del gran fresno, y se apoderá del lugar causando la muerte de varias nornas que trataron de defenderlo.",
+"Se decide a destruir todo y a todos.",
+"Se dirige al pozo de Urd, fuente de las aguas curativas que usan las nornas para sanar las raíces del gran fresno.",
+"Se apoderá del lugar causando la muerte de varias nornas que trataron de defenderlo.",
 "La nieve empieza a derretirse anunciando el fin del invierno y la llegada de la primavera, pero…"]
 
 
@@ -20,8 +22,16 @@ func startDialog():
 
 
 func dialog_counter():
-	if intro_text.size()==6:
+	if intro_text.size()==8:
 		$ui/trans_container/trans_anim.play("exit_slow")
+	if intro_text.size()==5:
+		$enfasis.play()
+	if intro_text.size()==3:
+		$AnimationPlayer.play("fadeaudio")
+		$enfasis2.play()
+	if intro_text.size()==1:
+		$AnimationPlayer.play("fadeaudio2")
+		$enfasis3.play()
 	if intro_text.size()==1:
 		$ui/trans_container/trans_anim.play("enter")
 	pass
@@ -74,4 +84,12 @@ func _on_trans_anim_animation_finished(anim_name):
 	if anim_name=="enter":
 		
 		pass
+	pass # Replace with function body.
+
+
+func _on_AnimationPlayer_animation_finished(anim_name):
+	if anim_name == "fadeaudio":
+		$enfasis.stop()
+	elif anim_name == "fadeaudio2":
+		$enfasis2.stop()
 	pass # Replace with function body.

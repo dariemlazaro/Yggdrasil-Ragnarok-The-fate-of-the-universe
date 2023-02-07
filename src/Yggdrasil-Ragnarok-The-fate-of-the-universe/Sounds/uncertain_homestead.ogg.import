@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/uncertain_homestead.ogg-8e758ce4f9a804cc635ca99e3c625723.oggstr"
+
+[deps]
+
+source_file="res://Sounds/uncertain_homestead.ogg"
+dest_files=[ "res://.import/uncertain_homestead.ogg-8e758ce4f9a804cc635ca99e3c625723.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

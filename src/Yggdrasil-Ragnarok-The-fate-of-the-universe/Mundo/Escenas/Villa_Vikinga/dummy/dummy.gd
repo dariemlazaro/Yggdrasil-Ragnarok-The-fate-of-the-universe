@@ -1,4 +1,4 @@
-extends MeshInstance
+extends Spatial
 
 var count = 0;
 
@@ -6,17 +6,21 @@ func _ready():
 	pass # Replace with function body.
 
 func _on_Area_area_entered(_area):
-	print("OK")
-	if count < 1:#3
+	#print("OK")
+	if count < 2:#3
 		count = count + 1
+		$AnimationPlayer.play("hit")
 	else:
 		$Area/CollisionShape.disabled = true
-		get_parent().get_parent().get_parent().get_parent().get_parent().count+=1
-		$dead.start()
+		$dummy/StaticBody/CollisionShape2.disabled = true
+		get_node("../../../../").count+=1
+		#$dead.start()
+		$AnimationPlayer.play("dead")
 
 
 func _on_dead_timeout():
-	call_deferred("queue_free")
+	pass
+	#call_deferred("queue_free")
 
 
 

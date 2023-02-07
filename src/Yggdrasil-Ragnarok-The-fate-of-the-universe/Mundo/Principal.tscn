@@ -1,8 +1,11 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Mundo/Escenas/Villa_Vikinga/viking village.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Mundo/RoomManager.gd" type="Script" id=2]
 [ext_resource path="res://HUD/aldea.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Sounds/swstr4.ogg" type="AudioStream" id=4]
+[ext_resource path="res://Sounds/outdoor_beautiful_land.ogg" type="AudioStream" id=5]
+[ext_resource path="res://Sounds/naturaleza.ogg" type="AudioStream" id=6]
 [ext_resource path="res://Personajes/Jugador/Jugador.tscn" type="PackedScene" id=21]
 [ext_resource path="res://Mundo/Principal.gd" type="Script" id=30]
 
@@ -24,18 +27,29 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.268737, 4.22192, 14.4239 )
 [node name="Playerpos" type="Spatial" parent="."]
 
 [node name="Position3D" type="Position3D" parent="Playerpos"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 16.6755, 12.3397, 68.7145 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 16.6755, 0.0300627, 68.7145 )
 
 [node name="Position3D2" type="Position3D" parent="Playerpos"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.82463, 0, -158.422 )
 
 [node name="Camera" type="Camera" parent="."]
-transform = Transform( 0.647023, 0.439771, 0.622867, -0.70533, 0.0349362, 0.708018, 0.289605, -0.89743, 0.332788, -12.029, 3.80539, 91.1221 )
+transform = Transform( 0.196857, -0.949847, 0.242979, -0.70533, 0.0349363, 0.708018, -0.680997, -0.310759, -0.663078, -4.69513, 3.80539, 91.1221 )
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 3.0
 one_shot = true
 
 [node name="aldea" parent="." instance=ExtResource( 3 )]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 5 )
+autoplay = true
+
+[node name="complete" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 4 )
+
+[node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 6 )
+autoplay = true
 
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

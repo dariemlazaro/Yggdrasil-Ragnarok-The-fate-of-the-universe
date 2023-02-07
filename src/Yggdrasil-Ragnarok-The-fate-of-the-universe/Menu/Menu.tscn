@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=2]
+[gd_scene load_steps=41 format=2]
 
 [ext_resource path="res://Recursos/Fuentes/general_ui/Megrim.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://Menu/arrow_back.png" type="Texture" id=2]
@@ -24,6 +24,10 @@
 [ext_resource path="res://Menu/menu_assets/fb_twitter.tres" type="Texture" id=22]
 [ext_resource path="res://Menu/menu_assets/estilos/button_p.tres" type="StyleBox" id=23]
 [ext_resource path="res://HUD/intro_assets/lensflare0_alpha.png" type="Texture" id=24]
+[ext_resource path="res://Sounds/fire.ogg" type="AudioStream" id=25]
+[ext_resource path="res://Sounds/sound74.ogg" type="AudioStream" id=26]
+[ext_resource path="res://Sounds/menu2.ogg" type="AudioStream" id=27]
+[ext_resource path="res://Sounds/menu.ogg" type="AudioStream" id=28]
 
 [sub_resource type="CanvasItemMaterial" id=4]
 
@@ -120,7 +124,7 @@ use_filter = true
 font_data = ExtResource( 15 )
 
 [sub_resource type="DynamicFont" id=7]
-size = 26
+size = 30
 use_filter = true
 font_data = ExtResource( 3 )
 
@@ -138,7 +142,7 @@ size = 25
 font_data = ExtResource( 14 )
 
 [sub_resource type="DynamicFont" id=13]
-size = 25
+size = 28
 font_data = ExtResource( 15 )
 
 [sub_resource type="DynamicFont" id=10]
@@ -216,10 +220,10 @@ stretch_mode = 6
 
 [node name="main_actions" type="VBoxContainer" parent="bottom_container"]
 margin_left = 240.0
-margin_top = -462.0
+margin_top = -575.0
 margin_right = 280.0
-margin_bottom = -389.0
-custom_constants/separation = 85
+margin_bottom = -275.0
+custom_constants/separation = 100
 
 [node name="item1" type="Control" parent="bottom_container/main_actions"]
 margin_right = 40.0
@@ -230,19 +234,19 @@ margin_bottom = 80.0
 focus_mode = 0
 mouse_default_cursor_shape = 2
 custom_colors/font_color = Color( 0.231373, 0.145098, 0.117647, 1 )
-custom_colors/font_color_hover = Color( 0.231373, 0.145098, 0.117647, 1 )
+custom_colors/font_color_hover = Color( 0.309804, 0.223529, 0.196078, 1 )
 custom_colors/font_color_pressed = Color( 0.25098, 0.0431373, 0.0431373, 1 )
 custom_fonts/font = SubResource( 5 )
-custom_styles/hover = ExtResource( 13 )
+custom_styles/hover = ExtResource( 23 )
 custom_styles/pressed = ExtResource( 23 )
 custom_styles/normal = ExtResource( 13 )
 enabled_focus_mode = 0
 text = "JUGAR!"
 
 [node name="item2" type="Control" parent="bottom_container/main_actions"]
-margin_top = 85.0
+margin_top = 100.0
 margin_right = 40.0
-margin_bottom = 85.0
+margin_bottom = 100.0
 
 [node name="button_credits" type="Button" parent="bottom_container/main_actions/item2"]
 margin_right = 278.0
@@ -250,19 +254,39 @@ margin_bottom = 80.0
 focus_mode = 0
 mouse_default_cursor_shape = 2
 custom_colors/font_color = Color( 0.231373, 0.145098, 0.117647, 1 )
-custom_colors/font_color_hover = Color( 0.231373, 0.145098, 0.117647, 1 )
+custom_colors/font_color_hover = Color( 0.309804, 0.223529, 0.196078, 1 )
 custom_colors/font_color_pressed = Color( 0.215686, 0.054902, 0.054902, 1 )
 custom_fonts/font = SubResource( 5 )
-custom_styles/hover = ExtResource( 13 )
+custom_styles/hover = ExtResource( 23 )
 custom_styles/pressed = ExtResource( 23 )
 custom_styles/normal = ExtResource( 13 )
 enabled_focus_mode = 0
 text = "CRÉDITOS"
 
-[node name="item3" type="Control" parent="bottom_container/main_actions"]
-margin_top = 170.0
+[node name="item4" type="Control" parent="bottom_container/main_actions"]
+margin_top = 200.0
 margin_right = 40.0
-margin_bottom = 170.0
+margin_bottom = 200.0
+
+[node name="button_salir" type="Button" parent="bottom_container/main_actions/item4"]
+margin_right = 278.0
+margin_bottom = 80.0
+focus_mode = 0
+mouse_default_cursor_shape = 2
+custom_colors/font_color = Color( 0.231373, 0.145098, 0.117647, 1 )
+custom_colors/font_color_hover = Color( 0.309804, 0.223529, 0.196078, 1 )
+custom_colors/font_color_pressed = Color( 0.215686, 0.054902, 0.054902, 1 )
+custom_fonts/font = SubResource( 5 )
+custom_styles/hover = ExtResource( 23 )
+custom_styles/pressed = ExtResource( 23 )
+custom_styles/normal = ExtResource( 13 )
+enabled_focus_mode = 0
+text = "SALIR"
+
+[node name="item3" type="Control" parent="bottom_container/main_actions"]
+margin_top = 300.0
+margin_right = 40.0
+margin_bottom = 300.0
 
 [node name="btn_github" type="TextureButton" parent="bottom_container/main_actions/item3"]
 margin_left = 26.0
@@ -272,6 +296,7 @@ margin_bottom = 60.0
 mouse_default_cursor_shape = 2
 texture_normal = ExtResource( 17 )
 texture_pressed = ExtResource( 18 )
+texture_hover = ExtResource( 18 )
 expand = true
 stretch_mode = 5
 
@@ -360,10 +385,10 @@ custom_fonts/font = SubResource( 13 )
 text = "Diseñadores:"
 
 [node name="game_ver" type="Label" parent="credits_screeen"]
-margin_left = 1219.0
-margin_top = 735.0
-margin_right = 1349.0
-margin_bottom = 759.0
+margin_left = 1209.0
+margin_top = 728.0
+margin_right = 1355.0
+margin_bottom = 755.0
 size_flags_vertical = 1
 custom_colors/font_color = Color( 0.643137, 0.611765, 0.568627, 1 )
 custom_fonts/font = SubResource( 13 )
@@ -523,3 +548,28 @@ margin_bottom = 681.0
 texture = ExtResource( 5 )
 expand = true
 stretch_mode = 6
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 25 )
+volume_db = -5.0
+autoplay = true
+
+[node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 26 )
+autoplay = true
+
+[node name="click" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 28 )
+
+[node name="back" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 27 )
+
+[connection signal="pressed" from="bottom_container/main_actions/item1/button_play" to="." method="_on_Jugar_pressed"]
+[connection signal="pressed" from="bottom_container/main_actions/item2/button_credits" to="." method="_on_Ver_Creditos_pressed"]
+[connection signal="pressed" from="bottom_container/main_actions/item4/button_salir" to="." method="_on_Salir_pressed"]
+[connection signal="pressed" from="bottom_container/main_actions/item3/btn_github" to="." method="openGithub"]
+[connection signal="pressed" from="credits_screeen/button_back" to="." method="_on_Atras_pressed"]
+[connection signal="pressed" from="credits_screeen/social_list/itm/button_fb" to="." method="opensocialFb" binds= [ "raul" ]]
+[connection signal="pressed" from="credits_screeen/social_list/itm2/button_twit" to="." method="opensocialTw" binds= [ "raul" ]]
+[connection signal="pressed" from="credits_screeen/social_list_dariem/itm/button_fb" to="." method="opensocialFb" binds= [ "dariem" ]]
+[connection signal="pressed" from="credits_screeen/social_list_dariem/itm2/button_twit" to="." method="opensocialTw" binds= [ "dariem" ]]

@@ -1,11 +1,16 @@
-[gd_scene load_steps=23 format=2]
+[gd_scene load_steps=30 format=2]
 
 [ext_resource path="res://Personajes/Enemigos/Gusano/gusano.gd" type="Script" id=1]
-[ext_resource path="res://Personajes/Enemigos/Gusano/Material_001.material" type="Material" id=2]
+[ext_resource path="res://Personajes/Enemigos/Gusano/gusano.material" type="Material" id=2]
+[ext_resource path="res://Sounds/punch_1.ogg" type="AudioStream" id=3]
 
-[sub_resource type="CapsuleShape" id=45]
-radius = 0.975552
-height = 0.594224
+[sub_resource type="CapsuleShape" id=55]
+radius = 0.381384
+height = 2.17688
+
+[sub_resource type="CapsuleShape" id=56]
+radius = 0.147861
+height = 0.420703
 
 [sub_resource type="ArrayMesh" id=40]
 resource_name = "worm_enemy_Plano"
@@ -49,21 +54,6 @@ bind/6/pose = Transform( -1.4013e-45, 1, -3.13916e-07, -1, -4.93601e-08, 1.65048
 bind/7/name = "Bone.007"
 bind/7/bone = -1
 bind/7/pose = Transform( -1.4013e-45, 1, -3.13916e-07, -1, -4.93601e-08, 1.65048e-09, 0, 3.15349e-07, 1, -0.00446728, -2.30357, 5.32929e-08 )
-
-[sub_resource type="Animation" id=44]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/path = NodePath("../ataque/CollisionShape:disabled")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ false ]
-}
 
 [sub_resource type="Animation" id=4]
 resource_name = "attack"
@@ -130,6 +120,20 @@ tracks/7/keys = {
 "update": 2,
 "values": [ false ]
 }
+tracks/8/type = "audio"
+tracks/8/path = NodePath("../../AudioStreamPlayer")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"clips": [ {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 3 )
+} ],
+"times": PoolRealArray( 0.6 )
+}
 
 [sub_resource type="Animation" id=3]
 resource_name = "caminar"
@@ -184,13 +188,6 @@ tracks/6/loop_wrap = true
 tracks/6/imported = false
 tracks/6/enabled = true
 tracks/6/keys = PoolRealArray( 0, 1, 0, 0, 0, 0, 0, -2.48923e-15, 1, 1, 1, 1, 0.3, 1, 0, 0, 0, 0, 0, -2.48923e-15, 1, 1, 1, 1, 0.4, 1, 0, 0, 0, 1.5276e-07, 3.77837e-15, -0.340411, 0.940277, 1, 1, 1, 0.5, 1, 0, 0, 0, 2.32001e-07, -3.25799e-10, -0.516992, 0.85599, 1, 1, 1, 0.6, 1, 0, 0, 0, 2.32003e-07, -3.25789e-10, -0.401889, 0.915689, 1, 1, 1, 0.7, 1, 0, 0, 0, 1.46571e-07, -1.86851e-10, -0.29351, 0.955956, 1, 1, 1, 0.8, 1, 0, 0, 0, 0.108448, 0.00522859, -0.0868186, 0.99029, 1, 1, 1, 0.9, 1, 0, 0, 0, 0.120339, 0.0058019, -0.0337717, 0.992141, 1, 1, 1, 1, 1, 0, 0, 0, 0.0196493, 0.000947349, -0.000914241, 0.999806, 1, 1, 1 )
-tracks/7/type = "transform"
-tracks/7/path = NodePath("Esqueleto/Skeleton:Bone")
-tracks/7/interp = 1
-tracks/7/loop_wrap = true
-tracks/7/imported = false
-tracks/7/enabled = true
-tracks/7/keys = PoolRealArray( 0, 1, 0, 0, 0, 7.10543e-15, 1.28987e-28, 1.81533e-14, 1, 1, 1, 1, 0.5, 1, 0, 0, 0, 7.10543e-15, 1.28987e-28, 1.81533e-14, 1, 1, 1, 1, 0.6, 1, 0.00245866, -0.226049, 3.4667e-10, 7.10543e-15, 1.28987e-28, 1.81533e-14, 1, 1, 1, 1, 0.7, 1, 0.00345116, -0.317298, -3.32602e-08, 7.10543e-15, 1.28987e-28, 1.81533e-14, 1, 1, 1, 1, 0.8, 1, 0.00261071, -0.240028, -4.18154e-08, 7.10543e-15, 1.28987e-28, 1.81533e-14, 1, 1, 1, 1, 0.9, 1, 0.000819954, -0.0753863, -4.20678e-08, 7.10543e-15, 1.28987e-28, 1.81533e-14, 1, 1, 1, 1, 1, 1, 0.00018565, -0.0170686, -4.21573e-08, 7.10543e-15, 1.28987e-28, 1.81533e-14, 1, 1, 1, 1 )
 
 [sub_resource type="Animation" id=5]
 resource_name = "hit"
@@ -237,20 +234,6 @@ tracks/5/loop_wrap = true
 tracks/5/imported = false
 tracks/5/enabled = true
 tracks/5/keys = PoolRealArray( 0.1, 1, 0, 0, 0, 4.65661e-10, -1.86264e-09, -1.15397e-08, 1, 1, 1, 1, 0.2, 1, 0, 0, 0, -0.00282971, 0.00157498, 0.00767149, 0.999965, 1, 1, 1, 0.4, 1, 0, 0, 0, -0.0375721, 0.0209121, 0.101857, 0.993869, 1, 1, 1, 0.5, 1, 0, 0, 0, -0.0436773, 0.0243102, 0.118408, 0.991706, 1, 1, 1, 0.6, 1, 0, 0, 0, -0.0457813, 0.0254836, 0.124304, 0.99086, 1, 1, 1, 0.7, 1, 0, 0, 0, -0.0397024, 0.0222072, 0.116886, 0.992103, 1, 1, 1, 0.8, 1, 0, 0, 0, -0.0337926, 0.0190106, 0.10872, 0.993316, 1, 1, 1, 0.9, 1, 0, 0, 0, -0.0267427, 0.0151795, 0.0974614, 0.994764, 1, 1, 1, 1, 1, 0, 0, 0, -0.0123504, 0.00727588, 0.0674968, 0.997617, 1, 1, 1, 1.1, 1, 0, 0, 0, -0.00196205, 0.00136526, 0.0284461, 0.999592, 1, 1, 1, 1.2, 1, 0, 0, 0, -0.000171854, 0.000159036, 0.0058315, 0.999983, 1, 1, 1, 1.7, 1, 0, 0, 0, -0.00400442, -0.00187714, -0.172816, 0.984944, 1, 1, 1 )
-tracks/6/type = "transform"
-tracks/6/path = NodePath("Esqueleto/Skeleton:Bone.001")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/keys = PoolRealArray(  )
-tracks/7/type = "transform"
-tracks/7/path = NodePath("Esqueleto/Skeleton:Bone")
-tracks/7/interp = 1
-tracks/7/loop_wrap = true
-tracks/7/imported = false
-tracks/7/enabled = true
-tracks/7/keys = PoolRealArray(  )
 
 [sub_resource type="Animation" id=6]
 resource_name = "idle"
@@ -314,26 +297,39 @@ tracks/7/enabled = true
 tracks/7/keys = PoolRealArray( 0, 1, 0, 0, 0, 7.10543e-15, 1.28987e-28, 1.81533e-14, 1, 1, 1, 1 )
 
 [sub_resource type="CapsuleShape" id=13]
-radius = 0.470933
-height = 3.64461
+radius = 1.16487
+height = 2.39683
 
-[sub_resource type="CapsuleShape" id=43]
-radius = 0.628805
-height = 2.0191
+[sub_resource type="CapsuleShape" id=46]
+radius = 0.341756
+height = 0.420703
+
+[sub_resource type="CapsuleShape" id=45]
+radius = 1.02034
+height = 2.17688
+
+[sub_resource type="CapsuleShape" id=47]
+radius = 0.955843
+height = 0.166741
 
 [sub_resource type="CylinderShape" id=22]
-height = 0.762866
-radius = 6.91557
-
-[sub_resource type="CylinderShape" id=23]
-height = 0.888107
-radius = 3.36563
+height = 2.78749
+radius = 9.63368
 
 [sub_resource type="AnimationNodeAnimation" id=24]
 animation = "caminar"
 
 [sub_resource type="AnimationNodeAnimation" id=25]
 animation = "attack"
+
+[sub_resource type="AnimationNodeAnimation" id=50]
+animation = "hit"
+
+[sub_resource type="AnimationNodeAnimation" id=51]
+animation = "dead"
+
+[sub_resource type="AnimationNodeAnimation" id=53]
+animation = "hit"
 
 [sub_resource type="AnimationNodeAnimation" id=41]
 animation = "idle"
@@ -345,39 +341,69 @@ animation = "idle"
 [sub_resource type="AnimationNodeOneShot" id=42]
 filters = [ "Esqueleto/Skeleton:Bone", "Esqueleto/Skeleton:Bone.001", "Esqueleto/Skeleton:Bone.002", "Esqueleto/Skeleton:Bone.003", "Esqueleto/Skeleton:Bone.004", "Esqueleto/Skeleton:Bone.005", "Esqueleto/Skeleton:Bone.006", "Esqueleto/Skeleton:Bone.007" ]
 
+[sub_resource type="AnimationNodeOneShot" id=54]
+
+[sub_resource type="AnimationNodeTransition" id=52]
+input_count = 2
+input_0/name = "hit"
+input_0/auto_advance = true
+input_1/name = "dead"
+input_1/auto_advance = false
+
 [sub_resource type="AnimationNodeBlend2" id=38]
 
 [sub_resource type="AnimationNodeBlendTree" id=39]
-graph_offset = Vector2( -53.8789, -59.427 )
+graph_offset = Vector2( 142.958, 101.597 )
 nodes/Animation/node = SubResource( 41 )
 nodes/Animation/position = Vector2( -26.6667, 0 )
 "nodes/Animation 2/node" = SubResource( 24 )
 "nodes/Animation 2/position" = Vector2( 0, 133.333 )
 "nodes/Animation 3/node" = SubResource( 25 )
 "nodes/Animation 3/position" = Vector2( 426.667, 213.333 )
+"nodes/Animation 4/node" = SubResource( 50 )
+"nodes/Animation 4/position" = Vector2( 640, 346.667 )
+"nodes/Animation 5/node" = SubResource( 51 )
+"nodes/Animation 5/position" = Vector2( 640, 453.333 )
+"nodes/Animation 6/node" = SubResource( 53 )
+"nodes/Animation 6/position" = Vector2( 640, 240 )
 nodes/TimeScale/node = SubResource( 36 )
 nodes/TimeScale/position = Vector2( 160, 0 )
 "nodes/TimeScale 2/node" = SubResource( 31 )
 "nodes/TimeScale 2/position" = Vector2( 160, 133.333 )
 nodes/ataque/node = SubResource( 42 )
 nodes/ataque/position = Vector2( 640, 53.3333 )
-nodes/output/position = Vector2( 933.333, 53.3333 )
+nodes/hit/node = SubResource( 54 )
+nodes/hit/position = Vector2( 826.667, 106.667 )
+nodes/hitdead/node = SubResource( 52 )
+nodes/hitdead/position = Vector2( 853.333, 293.333 )
+nodes/output/position = Vector2( 1200, 106.667 )
 nodes/rc_blend/node = SubResource( 38 )
 nodes/rc_blend/position = Vector2( 426.667, 26.6667 )
-node_connections = [ "output", 0, "ataque", "ataque", 0, "rc_blend", "ataque", 1, "Animation 3", "rc_blend", 0, "TimeScale", "rc_blend", 1, "TimeScale 2", "TimeScale", 0, "Animation", "TimeScale 2", 0, "Animation 2" ]
+node_connections = [ "output", 0, "hit", "ataque", 0, "rc_blend", "ataque", 1, "Animation 3", "TimeScale", 0, "Animation", "hit", 0, "ataque", "hit", 1, "Animation 6", "TimeScale 2", 0, "Animation 2", "rc_blend", 0, "TimeScale", "rc_blend", 1, "TimeScale 2", "hitdead", 0, "Animation 4", "hitdead", 1, "Animation 5" ]
 
 [node name="gusano" type="KinematicBody"]
 collision_layer = 64
-collision_mask = 31
+collision_mask = 23
 script = ExtResource( 1 )
 
 [node name="agent" type="NavigationAgent" parent="."]
+avoidance_enabled = true
 
-[node name="CollisionShape" type="CollisionShape" parent="."]
-transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 1.04065, 1.21489 )
-shape = SubResource( 45 )
+[node name="cuerpobajo" type="CollisionShape" parent="."]
+transform = Transform( 0.999998, 0, 0, 0, 1, 0, 0, 0, 0.999998, 0, 0, 1.53703 )
+shape = SubResource( 55 )
+
+[node name="cuerpomedio" type="CollisionShape" parent="."]
+transform = Transform( 2.99666, -0.113191, -0.0853575, -0.116184, -2.99587, -0.106093, -0.0812382, 0.109281, -2.99688, 0.0153113, 0.0246458, 4.07978 )
+shape = SubResource( 56 )
+disabled = true
 
 [node name="mesh" type="Spatial" parent="."]
+
+[node name="RemoteTransform" type="RemoteTransform" parent="mesh"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.53703 )
+remote_path = NodePath("../../cuerpobajo")
+update_scale = false
 
 [node name="Armature" type="Spatial" parent="mesh"]
 
@@ -431,9 +457,43 @@ portal_mode = 2
 mesh = SubResource( 40 )
 skin = SubResource( 2 )
 
+[node name="BoneAttachment" type="BoneAttachment" parent="mesh/Armature/Esqueleto/Skeleton"]
+transform = Transform( 0.03211, -0.99893, 0.0315808, 0.880273, 0.0353637, -0.0451655, 0.0332587, 0.0284517, 1.16493, -1.11158, 0.00521366, 0.00366396 )
+bone_name = "Bone.003"
+
+[node name="RemoteTransform" type="RemoteTransform" parent="mesh/Armature/Esqueleto/Skeleton/BoneAttachment"]
+transform = Transform( -5.56465e-08, -1, 3.72529e-09, -4.09782e-08, -3.72529e-09, -1, 0.999999, -3.7835e-08, -4.09782e-08, -0.00680074, 0.248245, -0.00463295 )
+remote_path = NodePath("../../../../../../cuerpomedio")
+update_scale = false
+
+[node name="RemoteTransform2" type="RemoteTransform" parent="mesh/Armature/Esqueleto/Skeleton/BoneAttachment"]
+transform = Transform( -5.56465e-08, -1, 3.72529e-09, -4.09782e-08, -3.72529e-09, -1, 0.999999, -3.7835e-08, -4.09782e-08, -0.00680074, 0.248245, -0.00463295 )
+remote_path = NodePath("../../../../../damage/cuerpomedio")
+update_scale = false
+
+[node name="BoneAttachment2" type="BoneAttachment" parent="mesh/Armature/Esqueleto/Skeleton"]
+transform = Transform( -0.0717174, -0.997336, 0.00822123, 0.88031, -0.0546662, 0.0153865, -0.045516, 0.00341378, 1.16486, -2.30272, 0.0242466, 0.0133481 )
+bone_name = "Bone.007"
+
+[node name="RemoteTransform2" type="RemoteTransform" parent="mesh/Armature/Esqueleto/Skeleton/BoneAttachment2"]
+transform = Transform( -0.000823359, -0.99914, -0.0855141, -0.0010844, 0.0669074, -0.995159, 0.999971, -0.000162516, -0.00335564, -0.000321254, -0.00517285, 2.60305e-06 )
+remote_path = NodePath("../../../../../damage/cuerpoalto")
+update_scale = false
+
+[node name="dead" type="BoneAttachment" parent="mesh/Armature/Esqueleto/Skeleton"]
+transform = Transform( -1.00583e-07, -1, 1.53368e-09, 1, -1.00583e-07, 3.15449e-07, -3.15449e-07, 1.53332e-09, 1, -0.410713, 0.00446722, -5.40723e-08 )
+bone_name = "Bone.001"
+
+[node name="Position3D" type="Position3D" parent="mesh/Armature/Esqueleto/Skeleton/dead"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+
+[node name="dead2" type="BoneAttachment" parent="mesh/Armature/Esqueleto/Skeleton"]
+transform = Transform( 0.03211, -0.99893, 0.0315808, 0.880273, 0.0353637, -0.0451655, 0.0332587, 0.0284517, 1.16493, -1.11158, 0.00521366, 0.00366396 )
+bone_name = "Bone.003"
+
+[node name="Position3D" type="Position3D" parent="mesh/Armature/Esqueleto/Skeleton/dead2"]
+
 [node name="worm_anim" type="AnimationPlayer" parent="mesh/Armature"]
-autoplay = "idle"
-anims/RESET = SubResource( 44 )
 anims/attack = SubResource( 4 )
 anims/caminar = SubResource( 3 )
 anims/hit = SubResource( 5 )
@@ -445,16 +505,24 @@ collision_layer = 128
 collision_mask = 4
 
 [node name="CollisionShape" type="CollisionShape" parent="mesh/ataque"]
-transform = Transform( 0.999325, -1.23804e-09, 0.036731, -1.48815e-09, 1, 8.10063e-08, -0.036731, -9.71993e-08, 0.999325, 0.0569994, 0.0887008, -5.30307 )
+transform = Transform( 0.999325, -1.23804e-09, 0.036731, -1.48815e-09, 1, 8.10063e-08, -0.036731, -9.71993e-08, 0.999325, 0.0569987, 0.276744, -5.30307 )
 shape = SubResource( 13 )
 
 [node name="damage" type="Area" parent="mesh"]
 collision_layer = 256
 collision_mask = 8
 
-[node name="CollisionShape" type="CollisionShape" parent="mesh/damage"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0480612, 0, 1.39871 )
-shape = SubResource( 43 )
+[node name="cuerpomedio" type="CollisionShape" parent="mesh/damage"]
+transform = Transform( 2.99668, -0.113191, -0.0853582, -0.116185, -2.99587, -0.106094, -0.0812388, 0.109281, -2.9969, 0.0153113, 0.0246458, 4.07978 )
+shape = SubResource( 46 )
+
+[node name="cuerpobajo" type="CollisionShape" parent="mesh/damage"]
+transform = Transform( 1, 0, 0, 0, -0.999827, -0.0186216, 0, 0.0186216, -0.999827, 0, 0.0178604, 1.49902 )
+shape = SubResource( 45 )
+
+[node name="cuerpoalto" type="CollisionShape" parent="mesh/damage"]
+transform = Transform( 0.999717, 0.0125919, -0.0081003, 0.0126337, -0.999759, 0.00515807, -0.00803432, -0.0052598, -0.999816, 0.0400446, 0.0727398, 6.8926 )
+shape = SubResource( 47 )
 
 [node name="persecution" type="Area" parent="mesh"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.43623, 4.95871 )
@@ -462,16 +530,8 @@ collision_layer = 512
 collision_mask = 4
 
 [node name="CollisionShape" type="CollisionShape" parent="mesh/persecution"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.125, -1.23211, 0.212 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.125, -0.31011, 1.35193 )
 shape = SubResource( 22 )
-
-[node name="overlap" type="Area" parent="mesh"]
-collision_layer = 1024
-collision_mask = 64
-
-[node name="CollisionShape" type="CollisionShape" parent="mesh/overlap"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.00453353, 3.7171 )
-shape = SubResource( 23 )
 
 [node name="wander" type="Timer" parent="."]
 one_shot = true
@@ -490,23 +550,38 @@ anim_player = NodePath("../mesh/Armature/worm_anim")
 parameters/TimeScale/scale = 1.0
 "parameters/TimeScale 2/scale" = 1.0
 parameters/ataque/active = false
+parameters/hit/active = false
+parameters/hitdead/current = 1
 parameters/rc_blend/blend_amount = 0.0
-
-[node name="stun" type="Timer" parent="."]
-one_shot = true
 
 [node name="reset" type="Timer" parent="."]
 wait_time = 30.0
 
 [node name="attack_timer" type="Timer" parent="."]
-wait_time = 3.0
+wait_time = 1.5
+one_shot = true
+
+[node name="movepath" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
+[node name="Camera" type="Camera" parent="."]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 12.4216, -0.32991, 3.50589 )
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 3 )
+volume_db = -17.6804
+
+[node name="dead" type="Timer" parent="."]
+wait_time = 2.0
 one_shot = true
 
 [connection signal="area_entered" from="mesh/ataque" to="." method="_on_ataque_area_entered"]
+[connection signal="area_entered" from="mesh/damage" to="." method="_on_damage_area_entered"]
 [connection signal="body_entered" from="mesh/persecution" to="." method="_on_persecution_body_entered"]
 [connection signal="body_exited" from="mesh/persecution" to="." method="_on_persecution_body_exited"]
 [connection signal="timeout" from="wander" to="." method="_on_wander_timeout"]
 [connection signal="timeout" from="move" to="." method="_on_move_timeout"]
 [connection signal="timeout" from="seek" to="." method="_on_seek_timeout"]
-[connection signal="timeout" from="stun" to="." method="_on_stun_timeout"]
 [connection signal="timeout" from="reset" to="." method="_on_reset_timeout"]
+[connection signal="timeout" from="dead" to="." method="_on_dead_timeout"]

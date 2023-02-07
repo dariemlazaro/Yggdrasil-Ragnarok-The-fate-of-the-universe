@@ -13,6 +13,7 @@ config_version=4
 config/name="Yggdrasil Ragnarok: The Fate of The Universe"
 config/description="El fresno del universo, el Yggdrasil, ha perdido su equilibrio natural. Las nornas no son suficientes para sanar sus raíces. Estas son corroídas constantemente por el veneno de Nidhoggr, la serpiente presa entre sus raíces, los gusanos, que tratan de pudrirlas y el fuego de los dragones, que las convierten en carbón. El pozo de Urd está asediado por el lobo gigante Fenrir, quien impide que las nornas tomen su agua sanadora y curen las raíces del Yggdrasil. Su resentimiento por conflictos divinos, oscureció su alma. El invierno se alarga y viene uno a continuación del otro. Según la profecía esto anunciaría un peligro inminente y el dios Odín trata de averiguar que ocurre.Tras consultar con el Águila anónima y sacrificar un ojo a cambio de conocer sobre el futuro del universo, Odín avizoró el fin de todos los tiempos, la llegada del Ragnarok. La ira de Fenrir había llegado demasiado lejos. Odín se dirige a una batalla decisiva, pero el destino es incierto y el gran lobo resultó ser más poderoso de lo esperado. Bajo sus garras afiladas, el dios Odín vio su final a la sombra del Yggdrassil. Desconsolados, los dioses consultan al Águila anónima para adquirir el conocimiento necesario para sobrevivir al Ragnarok, toman el ojo restante de Odín para entregarlo como ofrenda. La revelación del águila parece incierta: Solo queda una esperanza, un humano de voluntad pura, un lector incansable y un protector de la naturaleza, se funden en una sola alma en Midgard. Solo él podrá evitar la llegada del Ragnarok. Los dioses cruzan el Bifrost a Midgard y buscan por cada aldea quien cumpla con la profecía del Águila. Ningún habitante cumplía con la profecía, excepto un infante. Pero los dioses siguen buscando y no encuentran a más nadie. No quedó otra alternativa. Ese infante debía cargar con el peso del universo. Los dioses lo entrenan y lo bendicen para aumentar las probabilidades de éxito, pero las dudas persisten. Los dioses se preguntan como un simple mortal, un infante, podría desafiar la ira de los dioses y salir ileso. El propio Odín con todo su poderío, vio su final ante el Fenrir. ¿Cual será el destino de un simple mortal jugando a ser Dios?"
 run/main_scene="res://Black.tscn"
+run/low_processor_mode=true
 boot_splash/show_image=false
 boot_splash/bg_color=Color( 0, 0, 0, 0 )
 config/icon="res://icon.png"
@@ -22,11 +23,16 @@ config/icon="res://icon.png"
 Global="*res://Global/Global.tscn"
 Jsondata="res://Inventario/JSONDATA.gd"
 
+[debug]
+
+settings/stdout/print_fps=true
+
 [display]
 
 window/size/width=1366
 window/size/height=768
-window/size/fullscreen=true
+window/size/test_width=800
+window/size/test_height=600
 window/stretch/mode="2d"
 
 [gui]
@@ -149,13 +155,24 @@ fallback="es_CU"
 [physics]
 
 common/enable_pause_aware_picking=true
+3d/physics_engine="Bullet"
 
 [rendering]
 
+quality/driver/driver_name="GLES2"
 quality/driver/fallback_to_gles2=true
+quality/intended_usage/framebuffer_allocation=3
 quality/directional_shadow/size=256
 quality/directional_shadow/size.mobile=256
 quality/shadows/filter_mode=0
+quality/reflections/texture_array_reflections=false
+quality/reflections/high_quality_ggx=false
+quality/shading/force_vertex_shading=true
+quality/shading/force_lambert_over_burley=true
+quality/shading/force_blinn_over_ggx=true
+quality/filters/anisotropic_filter_level=1
+quality/filters/use_nearest_mipmap_filter=true
 quality/spatial_partitioning/render_tree_balance=1.0
+quality/lightmapping/use_bicubic_sampling=false
+quality/depth/hdr=false
 environment/default_environment="res://default_env.tres"
-quality/subsurface_scattering/quality=0

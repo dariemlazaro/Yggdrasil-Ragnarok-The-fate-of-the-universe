@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/empty_village.ogg-6490e5babb4dd23e16350424b8ee6158.oggstr"
+
+[deps]
+
+source_file="res://Sounds/empty_village.ogg"
+dest_files=[ "res://.import/empty_village.ogg-6490e5babb4dd23e16350424b8ee6158.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

@@ -14,7 +14,7 @@ var dialogos=[
 "¡¡¡SE HA CONGELADO!!!", # ya callate Odín
 "Un invierno seguido de otro. ¿Será la llegada del [b]Gran invierno[/b]?", #Nooo... seguro es la del verano Odín
 "Debo consultar con urgencia al [b]Águila anónima[/b].", # No será mejor a Duolingo?? 
-"Esperaba tu llegada, caballero oscuro. Las respuestas que buscan tienen un precio alto.", # Comienza a hablar el pollo, digo, el aguila l21
+"Esperaba tu llegada, caballero oscuro. Las respuestas que buscas tienen un precio alto.", # Comienza a hablar el pollo, digo, el aguila l21
 "¿De qué hablas? ¿Ni siquiera te he preguntado nada?", # el "Santa" nórdico alias Odín l20
 "¡Pero lo preguntarás! [b]Pasado, Presente y Futuro[/b] convergen en este árbol y solo mis ojos pueden verlo todo.", #Aguila kawaii l19
 "¡Entonces ya debes conocer sobre la llegada del [b]Gran invierno[/b]!", # Odín l18
@@ -22,7 +22,7 @@ var dialogos=[
 "Sin ojos no puedo defender [b]los 9 mundos[/b] enlazados a este árbol. Te ofrezco un trato.", # Odín l16
 "Uno de mis ojos puedo ofrecer, pero no más. Tengo responsabilidades muy importantes.", # Odín no lo hagas :'( l15
 "¡Por supuesto, solo uno! ¡ujummm!. Ya lo sabía desde el comienzo.", # Eres águila o cuervo?? l14
-"¡¡¡AHHRRGG!!! To…toma, aquí tienes. Uno de mis ojos. [b]Ahora revélame el futuro[/b].", # Odín l13
+"¡¡¡AHHHHHHHHRRRRRRRRRRGG!!! To…toma, aquí tienes. Uno de mis ojos. [b]Ahora revélame el futuro[/b].", # Odín l13
 "Debo admitirlo tienes agallas… Voy a ello.", # Aguila l12
 "El [b]Yggdrasil[/b] ha perdido su equilibrio natural y han enfermado sus raíces. ", # Aguila l11
 "El veneno de [b]Nidhoggr[/b], la serpiente atrapada entre sus raíces, los gusanos, que intentan pudrirlas, y los dragones que las convierten en carbón hacen mucho daño a estas. ",
@@ -50,7 +50,15 @@ func dialogcounter():
 	#
 	if dialogos.size()==28:
 		$ui/container/dialog_window_bottom/char_name.text="Odín"
+	if dialogos.size()==27:
+		$AnimationPlayer.play("fadeaudio")
+		$enfasis.play()
+		$viento.play()
+		
+	if dialogos.size()==22:
+		$horse.play()
 	if dialogos.size()==21:
+		$horse.stop()
 		$ui/container/dialog_window_bottom/char_name.text="Águila anónima"
 	if dialogos.size()==20:
 		$ui/container/dialog_window_bottom/char_name.text="Odín"
@@ -67,9 +75,16 @@ func dialogcounter():
 	if dialogos.size()==14:
 		$ui/container/dialog_window_bottom/char_name.text="Águila anónima"
 	if dialogos.size()==13:
+		$ojo.play()
 		$ui/container/dialog_window_bottom/char_name.text="Odín"
 	if dialogos.size()==12:
 		$ui/container/dialog_window_bottom/char_name.text="Águila anónima"
+	if dialogos.size()==11:
+		$tragic.play()
+		$AnimationPlayer.play("fadeaudio2")
+	if dialogos.size()==7:
+		$enfasis2.play()
+		#$AnimationPlayer.play("fadeaudio3")
 	if dialogos.size()==4:
 		$ui/container/dialog_window_bottom/char_name.text="Odín"
 	if dialogos.size()==3:
@@ -138,4 +153,12 @@ func _on_transition_anim_animation_finished(anim_name):
 	if anim_name=="exit_dialog":
 		endScene()
 		pass
+	pass # Replace with function body.
+
+
+func _on_AnimationPlayer_animation_finished(anim_name):
+	if anim_name == "fadeaudio":
+		$nature.stop()
+	elif anim_name == "fadeaudio2":
+		$enfasis.stop()
 	pass # Replace with function body.

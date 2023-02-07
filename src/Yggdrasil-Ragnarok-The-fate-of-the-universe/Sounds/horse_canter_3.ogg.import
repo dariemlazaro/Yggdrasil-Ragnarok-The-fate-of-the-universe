@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/horse_canter_3.ogg-dbec90dfeb7c4ffc075df22fec153a3e.oggstr"
+
+[deps]
+
+source_file="res://Sounds/horse_canter_3.ogg"
+dest_files=[ "res://.import/horse_canter_3.ogg-dbec90dfeb7c4ffc075df22fec153a3e.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

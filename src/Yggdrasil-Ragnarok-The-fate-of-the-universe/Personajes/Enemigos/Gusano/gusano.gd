@@ -1,8 +1,14 @@
 extends KinematicBody
 
-#navigation
+var count = 0
+var gusanofirst = preload("res://Personajes/Enemigos/Gusano/pedazogusano1.tscn")
+var gusanosecond = preload("res://Personajes/Enemigos/Gusano/pedazogusano2.tscn")
+onready var poso = $mesh/Armature/Esqueleto/Skeleton/dead#/Position3D
+onready var poss = $mesh/Armature/Esqueleto/Skeleton/dead2#/Position3D
 
+#navigation
 onready var agent : NavigationAgent = $agent
+onready var next = agent.get_next_location()
 
 #end navigation
 
@@ -12,14 +18,13 @@ onready var vida = vida_maxima
 onready var first_position = global_transform.origin
 onready var target_position = global_transform.origin
 var wander_range = 20
+var firstmove = false
 
 #nodos
 onready var damage_area = $mesh/damage
 onready var damage_col = $mesh/damage
 onready var ataque_area = $mesh/ataque
 onready var ataque_col = $mesh/ataque/CollisionShape
-onready var overlap_area = $mesh/overlap
-onready var overlap_col = $mesh/overlap/CollisionShape
 onready var persecution_area = $mesh/persecution
 onready var persecution_col = $mesh/persecution/CollisionShape
 onready var mesh = $mesh
@@ -75,7 +80,7 @@ func _ready():
 	#definir objetibo del navegacion
 	agent.set_target_location(target_position)
 	randomize()
-	gravity = 2 * max_jump_heigth / pow(jump_duration, 2)
+	gravity = 0# 2 * max_jump_heigth / pow(jump_duration, 2)
 	max_jump_velocity = -jump_duration * gravity
 	min_jump_velocity = -sqrt(2 * gravity * min_jump_heigth)
 	jump_velocity = max_jump_velocity
@@ -92,27 +97,33 @@ func _physics_process(delta):
 				state = pick_random_state([IDLE, WANDER])
 				$wander.start(rand_range(1,5))
 		WANDER:
+
 			animation.set("parameters/rc_blend/blend_amount", lerp(animation.get("parameters/rc_blend/blend_amount"), 1, delta * acceleration))
 			persecution(delta)
 			movement_speed = 5
 			#new navigation
-			var next = agent.get_next_location()
-			direction = (next - global_transform.origin)
+			if $movepath.is_stopped():
+				$movepath.start()
+				next = agent.get_next_location()
+				direction = (next - global_transform.origin)
 				#navigation
-			
+			if !firstmove:
+				firstmove = true
 			if thisplayer == null and global_transform.origin.distance_to(first_position) >= wander_range + 4:
 				if $reset.is_stopped():
 					$reset.start()
 			elif $wander.time_left == 0 or global_transform.origin.distance_to(target_position) <= 3:
 				state = pick_random_state([IDLE, WANDER])
-				$wander.start(rand_range(1,3))  			
+				$wander.start(rand_range(2,5))  			
 		CHASE:
 			animation.set("parameters/rc_blend/blend_amount", lerp(animation.get("parameters/rc_blend/blend_amount"), 1, delta * acceleration))
 			if thisplayer != null:
 				movement_speed = 5
-				var next = agent.get_next_location()
-				direction = (next - global_transform.origin)
-				if global_transform.origin.distance_to(thisplayer.global_transform.origin) <= 4 and $attack_timer.is_stopped():
+				if $movepath.is_stopped():
+					$movepath.start()
+					next = agent.get_next_location()
+					direction = (next - global_transform.origin)
+				if global_transform.origin.distance_to(thisplayer.global_transform.origin) <= 6:#4
 					state = ATTACK
 
 			else:
@@ -120,33 +131,44 @@ func _physics_process(delta):
 				state = IDLE
 
 		ATTACK:
-
 			movement_speed = 0
-			if animation.get("parameters/ataque/active") == false:
+			
+			if animation.get("parameters/ataque/active") == false and $attack_timer.is_stopped():
 				animation.set("parameters/ataque/active", true)
 				$attack_timer.start()
 				state = CHASE
 		DEAD:
-			velocity = Vector3.ZERO
-			damage_area.set_deferred("monitorable", false)
-			damage_col.set_deferred("disabled", true)
-			ataque_area.set_deferred("monitorable", false)
-			ataque_col.set_deferred("disabled", true)
-			overlap_area.set_deferred("monitorable", false)
-			overlap_col.set_deferred("disabled", true)
-			persecution_area.set_deferred("monitorable", false)
-			persecution_col.set_deferred("disabled", true)
+			if mesh.visible:
+				mesh.visible = false
+				velocity = Vector3.ZERO
+				
+				var gusone = gusanofirst.instance()
+				var gussec = gusanosecond.instance() 
+#				gusone.global_transform = poso.global_transform
+#				gussec.global_transform = poss.global_transform
+				get_parent().add_child(gusone)
+				get_parent().add_child(gussec)
+				gusone.global_transform = self.global_transform
+				#gusone.global_transform = 3
+				gussec.global_transform = poss.global_transform
+				#gussec.global_transform.origin = poss.global_transform.origin
+				#gussec.global_rotation = poss.global_rotation
+				#gussec.global_transform.scale = 3
+				$dead.start()
+				
 
 	velocity = lerp(velocity , direction.normalized() * movement_speed, delta * friction * acceleration)
 	velocity = move_and_slide(velocity + Vector3.DOWN * vertical_velocity, Vector3.UP)
-
-	mesh.rotation.y = lerp_angle(mesh.rotation.y, atan2(direction.x, direction.z), delta * angular_acceleration)
+	if firstmove:#$attack_timer.is_stopped():
+		$cuerpobajo.rotation.y = lerp_angle(mesh.rotation.y, atan2(direction.x, direction.z), delta * angular_acceleration)
+		mesh.rotation.y = lerp_angle(mesh.rotation.y, atan2(direction.x, direction.z), delta * angular_acceleration)
 
 	if !is_on_floor():
 		vertical_velocity += gravity * delta
 	else:
-		if get_floor_normal().y != 1:
-			vertical_velocity = 0
+		vertical_velocity = 0
+#		if get_floor_normal().y != 1:
+#			vertical_velocity = 0
 
 
 func move_to(target_pos):
@@ -182,22 +204,12 @@ func _on_move_timeout():
 	if thisplayer != null:
 		#navigation
 		move_to(thisplayer.global_transform.origin)
-	elif global_transform.origin.distance_to(first_position) >= wander_range + 4:
+	elif global_transform.origin.distance_to(first_position) >= wander_range + 6:
 		move_to(first_position)
 
 func _on_seek_timeout():
 	if player == null:
 		thisplayer = null
-
-func _on_stun_timeout():
-	pass # Replace with function body.
-
-
-func _on_jump_area_entered(_area):
-	vertical_velocity = jump_velocity
-
-func _on_jump_body_entered(_body):
-	vertical_velocity = jump_velocity
 
 
 func _on_reset_timeout():
@@ -218,3 +230,24 @@ func enable_atk():
 func disable_atk():
 	ataque_area.set_deferred("monitoring", false)
 	ataque_col.set_deferred("disabled", true)
+
+
+func _on_damage_area_entered(area):
+	print("OK")
+	if count < 2:#3
+		count = count + 1
+		animation.set("parameters/hit/active", true)
+	else:
+		state = DEAD
+
+
+
+func _on_dead_timeout():
+	damage_area.set_deferred("monitorable", false)
+	damage_col.set_deferred("disabled", true)
+	ataque_area.set_deferred("monitorable", false)
+	ataque_col.set_deferred("disabled", true)
+	persecution_area.set_deferred("monitorable", false)
+	persecution_col.set_deferred("disabled", true)
+	call_deferred("queue_free")
+	pass # Replace with function body.

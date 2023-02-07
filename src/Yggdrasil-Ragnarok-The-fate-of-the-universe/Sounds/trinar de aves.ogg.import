@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/trinar de aves.ogg-b6b747412ce5eb641a51e11e3aa1f615.oggstr"
+
+[deps]
+
+source_file="res://Sounds/trinar de aves.ogg"
+dest_files=[ "res://.import/trinar de aves.ogg-b6b747412ce5eb641a51e11e3aa1f615.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

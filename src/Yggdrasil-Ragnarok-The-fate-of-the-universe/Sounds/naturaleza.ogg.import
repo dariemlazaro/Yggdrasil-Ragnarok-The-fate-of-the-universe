@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/naturaleza.ogg-83dddc504a3a018c4c074add7623f0aa.oggstr"
+
+[deps]
+
+source_file="res://Sounds/naturaleza.ogg"
+dest_files=[ "res://.import/naturaleza.ogg-83dddc504a3a018c4c074add7623f0aa.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

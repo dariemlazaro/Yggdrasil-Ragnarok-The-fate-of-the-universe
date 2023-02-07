@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/victorious_evil.ogg-c1884227fea33a40c518ddb0bbbc52a0.oggstr"
+
+[deps]
+
+source_file="res://Sounds/victorious_evil.ogg"
+dest_files=[ "res://.import/victorious_evil.ogg-c1884227fea33a40c518ddb0bbbc52a0.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

@@ -11,9 +11,6 @@ rect_min_size = Vector2( 350, 35 )
 size_flags_horizontal = 0
 size_flags_vertical = 0
 script = ExtResource( 7 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="fondobarra" type="TextureRect" parent="."]
 self_modulate = Color( 1, 1, 1, 0.627451 )

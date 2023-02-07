@@ -9,6 +9,7 @@ func _ready():
 
 func _process(_delta):
 	if started == false and count == 3:
+		$complete.play()
 		started =true
 		$Timer.start()
 

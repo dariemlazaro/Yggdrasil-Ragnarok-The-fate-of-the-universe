@@ -1,4 +1,4 @@
-[gd_scene load_steps=56 format=2]
+[gd_scene load_steps=59 format=2]
 
 [ext_resource path="res://Personajes/Jugador/PLACAS.material" type="Material" id=1]
 [ext_resource path="res://Personajes/Jugador/ROPA.material" type="Material" id=2]
@@ -12,6 +12,9 @@
 [ext_resource path="res://Personajes/Jugador/CABEZA.material" type="Material" id=10]
 [ext_resource path="res://Personajes/Jugador/PIEL.material" type="Material" id=11]
 [ext_resource path="res://Personajes/Jugador/PELO.material" type="Material" id=12]
+[ext_resource path="res://Sounds/wooden_hit_high_armor_low_damage_2.ogg" type="AudioStream" id=13]
+[ext_resource path="res://Sounds/body_fall_1.ogg" type="AudioStream" id=14]
+[ext_resource path="res://Sounds/footstep_1.ogg" type="AudioStream" id=15]
 
 [sub_resource type="CapsuleShape" id=71]
 margin = 0.001
@@ -643,6 +646,20 @@ tracks/41/keys = {
 "update": 2,
 "values": [ false ]
 }
+tracks/42/type = "audio"
+tracks/42/path = NodePath("../AudioStreamPlayer")
+tracks/42/interp = 1
+tracks/42/loop_wrap = true
+tracks/42/imported = false
+tracks/42/enabled = true
+tracks/42/keys = {
+"clips": [ {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 13 )
+} ],
+"times": PoolRealArray( 0.5 )
+}
 
 [sub_resource type="Animation" id=10]
 resource_name = "block"
@@ -1230,6 +1247,7 @@ tracks/40/keys = PoolRealArray( 0, 1, 0.175204, -6.03085, -0.00976429, 0.0508131
 resource_name = "caminar"
 length = 1.03333
 loop = true
+step = 0.05
 tracks/0/type = "transform"
 tracks/0/path = NodePath("Armature/Skeleton:mixamorig_HeadTop_End")
 tracks/0/interp = 1
@@ -2417,6 +2435,20 @@ tracks/42/keys = {
 "update": 3,
 "values": [ 0.437211, 0.908922, 1.11874, 1.06509, 0.76143, 0.88876, 0.71859, 0.437211 ]
 }
+tracks/43/type = "audio"
+tracks/43/path = NodePath("../AudioStreamPlayer")
+tracks/43/interp = 1
+tracks/43/loop_wrap = true
+tracks/43/imported = false
+tracks/43/enabled = true
+tracks/43/keys = {
+"clips": [ {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 14 )
+} ],
+"times": PoolRealArray( 0.2 )
+}
 
 [sub_resource type="Animation" id=15]
 resource_name = "sacar arma"
@@ -3111,7 +3143,7 @@ nodes/saltar/node = SubResource( 59 )
 nodes/saltar/position = Vector2( 586.667, 586.667 )
 nodes/sc_transition/node = SubResource( 60 )
 nodes/sc_transition/position = Vector2( 453.333, 640 )
-node_connections = [ "output", 0, "block_blend", "ataque", 0, "rodar", "ataque", 1, "TimeScale 10", "saltar", 1, "sc_transition", "OneShot", 0, "Animation 4", "OneShot", 1, "Animation 3", "TimeScale", 0, "correr", "TimeScale 10", 0, "Animation 2", "TimeScale 2", 0, "roll", "TimeScale 3", 0, "caminar", "TimeScale 4", 0, "Saltar", "TimeScale 5", 0, "Animation", "block_blend", 0, "ataque", "block_blend", 1, "OneShot", "iwr_blend", 0, "reposo", "iwr_blend", 1, "TimeScale 3", "iwr_blend", 2, "TimeScale", "rodar", 0, "iwr_blend", "rodar", 1, "TimeScale 2", "sc_transition", 0, "TimeScale 4", "sc_transition", 1, "TimeScale 5" ]
+node_connections = [ "output", 0, "block_blend", "TimeScale 10", 0, "Animation 2", "OneShot", 0, "Animation 4", "OneShot", 1, "Animation 3", "ataque", 0, "rodar", "ataque", 1, "TimeScale 10", "TimeScale", 0, "correr", "block_blend", 0, "ataque", "block_blend", 1, "OneShot", "TimeScale 2", 0, "roll", "TimeScale 5", 0, "Animation", "saltar", 1, "sc_transition", "TimeScale 4", 0, "Saltar", "sc_transition", 0, "TimeScale 4", "sc_transition", 1, "TimeScale 5", "rodar", 0, "iwr_blend", "rodar", 1, "TimeScale 2", "TimeScale 3", 0, "caminar", "iwr_blend", 0, "reposo", "iwr_blend", 1, "TimeScale 3", "iwr_blend", 2, "TimeScale" ]
 
 [node name="Player" type="KinematicBody"]
 collision_layer = 4
@@ -3342,7 +3374,7 @@ bones/40/enabled = true
 bones/40/bound_children = [  ]
 
 [node name="BoneAttachment" type="BoneAttachment" parent="mesh/Armature/Skeleton"]
-transform = Transform( 1, -5.18187e-12, -9.16016e-12, 9.25127e-12, -2.98023e-08, 0.999999, -1.45519e-11, -0.999999, -2.98023e-08, -8.13288e-05, -0.309411, -37.6706 )
+transform = Transform( 1, 0, 0, 0, -4.65654e-10, 0.999999, 0, -0.999999, -4.65654e-10, 0.0530081, -0.181515, -37.6917 )
 bone_name = "mixamorig_Head"
 
 [node name="PELO" type="MeshInstance" parent="mesh/Armature/Skeleton/BoneAttachment"]
@@ -3351,7 +3383,7 @@ portal_mode = 2
 mesh = SubResource( 1 )
 
 [node name="BoneAttachment2" type="BoneAttachment" parent="mesh/Armature/Skeleton"]
-transform = Transform( -0.000114111, -0.99947, 0.0325659, 0.794842, -0.0198522, -0.606491, 0.606816, 0.0258162, 0.794422, -17.4583, -0.0754765, -32.7277 )
+transform = Transform( 0.0290873, -0.999531, -0.00963014, 0.794397, 0.0289631, -0.606707, 0.606701, 0.00999805, 0.794866, -17.3957, 0.0886533, -32.5089 )
 bone_name = "mixamorig_RightHand"
 
 [node name="AXE" type="MeshInstance" parent="mesh/Armature/Skeleton/BoneAttachment2"]
@@ -3366,7 +3398,6 @@ collision_mask = 64
 [node name="CollisionShape" type="CollisionShape" parent="mesh/Armature/Skeleton/BoneAttachment2/AXE/ataque"]
 transform = Transform( 1, -2.12844e-09, -7.45058e-09, -7.13726e-10, 1, 4.18368e-10, 0, -5.92991e-10, 1, -0.247819, 0.316377, 0.0640128 )
 shape = SubResource( 82 )
-disabled = true
 
 [node name="BODY" type="MeshInstance" parent="mesh/Armature/Skeleton"]
 portal_mode = 2
@@ -3471,6 +3502,9 @@ one_shot = true
 [node name="Timercastle" type="Timer" parent="." groups=["Player"]]
 wait_time = 1.5
 one_shot = true
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 15 )
 
 [connection signal="area_entered" from="mesh/Armature/Skeleton/BoneAttachment2/AXE/ataque" to="." method="_on_ataque_area_entered"]
 [connection signal="timeout" from="fall_timer" to="." method="_on_fall_timer_timeout"]

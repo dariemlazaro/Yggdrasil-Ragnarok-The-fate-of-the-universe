@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=27 format=2]
 
 [ext_resource path="res://Recursos/Fuentes/general_ui/LeagueSpartan-Regular.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://Recursos/Fuentes/general_ui/Megrim.ttf" type="DynamicFontData" id=2]
@@ -7,6 +7,13 @@
 [ext_resource path="res://Recursos/Fuentes/general_ui/LeagueSpartan-SemiBold.ttf" type="DynamicFontData" id=5]
 [ext_resource path="res://HUD/intro_assets/intro2.png" type="Texture" id=6]
 [ext_resource path="res://HUD/intro_assets/pngwing.com.png" type="Texture" id=7]
+[ext_resource path="res://Sounds/naturaleza.ogg" type="AudioStream" id=8]
+[ext_resource path="res://Sounds/man_yell_4_2.ogg" type="AudioStream" id=9]
+[ext_resource path="res://Sounds/horse_canter_3.ogg" type="AudioStream" id=10]
+[ext_resource path="res://Sounds/warband_action.ogg" type="AudioStream" id=11]
+[ext_resource path="res://Sounds/viento.ogg" type="AudioStream" id=12]
+[ext_resource path="res://Sounds/tragic_village.ogg" type="AudioStream" id=13]
+[ext_resource path="res://Sounds/victorious_evil.ogg" type="AudioStream" id=14]
 
 [sub_resource type="StyleBoxTexture" id=4]
 texture = ExtResource( 3 )
@@ -184,6 +191,41 @@ tracks/0/keys = {
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
 }
 
+[sub_resource type="Animation" id=13]
+resource_name = "fadeaudio"
+length = 4.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("nature:volume_db")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, -40.0 ]
+}
+
+[sub_resource type="Animation" id=15]
+resource_name = "fadeaudio2"
+length = 4.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("enfasis:volume_db")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, -40.0 ]
+}
+
+[sub_resource type="Animation" id=16]
+resource_name = "fadeaudio3"
+
 [node name="story_tell_scene" type="Node"]
 script = ExtResource( 4 )
 
@@ -290,5 +332,35 @@ __meta__ = {
 [node name="dialog_anim" type="AnimationPlayer" parent="."]
 anims/new_dial = SubResource( 6 )
 
+[node name="nature" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 8 )
+volume_db = -40.0
+autoplay = true
+
+[node name="ojo" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 9 )
+volume_db = -3.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/fadeaudio = SubResource( 13 )
+anims/fadeaudio2 = SubResource( 15 )
+anims/fadeaudio3 = SubResource( 16 )
+
+[node name="enfasis" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 11 )
+
+[node name="enfasis2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 14 )
+
+[node name="horse" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 10 )
+
+[node name="tragic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 13 )
+
+[node name="viento" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 12 )
+
 [connection signal="animation_finished" from="ui/chapter_tansition/transition_anim" to="." method="_on_transition_anim_animation_finished"]
 [connection signal="animation_finished" from="dialog_anim" to="." method="_on_dialog_anim_animation_finished"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]

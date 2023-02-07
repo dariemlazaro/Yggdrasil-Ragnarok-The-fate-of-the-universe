@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/ambushed_by_khergit.ogg-c9947195ebf910dafbd716e965adb87c.oggstr"
+
+[deps]
+
+source_file="res://Sounds/ambushed_by_khergit.ogg"
+dest_files=[ "res://.import/ambushed_by_khergit.ogg-c9947195ebf910dafbd716e965adb87c.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

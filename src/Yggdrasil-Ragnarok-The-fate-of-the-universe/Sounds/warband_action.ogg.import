@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/warband_action.ogg-0ce70bc25b0d40807bc46860776578cb.oggstr"
+
+[deps]
+
+source_file="res://Sounds/warband_action.ogg"
+dest_files=[ "res://.import/warband_action.ogg-0ce70bc25b0d40807bc46860776578cb.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

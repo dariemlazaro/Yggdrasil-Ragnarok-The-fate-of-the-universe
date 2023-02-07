@@ -1,10 +1,14 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://HUD/intro_assets/lensflare0_alpha.png" type="Texture" id=1]
 [ext_resource path="res://HUD/intro_assets/intro_background_tree.png" type="Texture" id=2]
 [ext_resource path="res://Recursos/Fuentes/general_ui/LeagueSpartan-Regular.ttf" type="DynamicFontData" id=3]
 [ext_resource path="res://HUD/intro_assets/dialog_frame.png" type="Texture" id=4]
 [ext_resource path="res://HUD/intro_dialog.gd" type="Script" id=5]
+[ext_resource path="res://Sounds/sound13.ogg" type="AudioStream" id=6]
+[ext_resource path="res://Sounds/uncertain_homestead.ogg" type="AudioStream" id=7]
+[ext_resource path="res://Sounds/ambushed_by_khergit.ogg" type="AudioStream" id=8]
+[ext_resource path="res://Sounds/victorious_evil.ogg" type="AudioStream" id=9]
 
 [sub_resource type="CanvasItemMaterial" id=2]
 blend_mode = 1
@@ -157,6 +161,65 @@ tracks/1/keys = {
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
 }
 
+[sub_resource type="Animation" id=10]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("enfasis:volume_db")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 3.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("enfasis2:volume_db")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+
+[sub_resource type="Animation" id=11]
+resource_name = "fadeaudio"
+length = 4.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("enfasis:volume_db")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 3.0, -40.0 ]
+}
+
+[sub_resource type="Animation" id=12]
+resource_name = "fadeaudio2"
+length = 4.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("enfasis2:volume_db")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, -40.0 ]
+}
+
 [node name="intro_dialog" type="Node"]
 script = ExtResource( 5 )
 
@@ -239,5 +302,25 @@ autoplay = "rs"
 anims/rs = SubResource( 5 )
 anims/write_intro_text = SubResource( 4 )
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 6 )
+autoplay = true
+
+[node name="enfasis" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 8 )
+volume_db = 3.0
+
+[node name="enfasis2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 7 )
+
+[node name="enfasis3" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 9 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/RESET = SubResource( 10 )
+anims/fadeaudio = SubResource( 11 )
+anims/fadeaudio2 = SubResource( 12 )
+
 [connection signal="animation_finished" from="ui/trans_container/trans_anim" to="." method="_on_trans_anim_animation_finished"]
 [connection signal="animation_finished" from="anim" to="." method="_on_anim_animation_finished"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]

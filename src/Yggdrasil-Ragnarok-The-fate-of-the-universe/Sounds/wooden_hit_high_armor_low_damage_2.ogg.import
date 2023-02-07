@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/wooden_hit_high_armor_low_damage_2.ogg-ccac19a3568b7ac3e22a469dca720b15.oggstr"
+
+[deps]
+
+source_file="res://Sounds/wooden_hit_high_armor_low_damage_2.ogg"
+dest_files=[ "res://.import/wooden_hit_high_armor_low_damage_2.ogg-ccac19a3568b7ac3e22a469dca720b15.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

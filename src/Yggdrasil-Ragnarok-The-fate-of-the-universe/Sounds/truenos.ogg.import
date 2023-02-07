@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/truenos.ogg-e9433bcc592d810ed3bcb9975692ad9d.oggstr"
+
+[deps]
+
+source_file="res://Sounds/truenos.ogg"
+dest_files=[ "res://.import/truenos.ogg-e9433bcc592d810ed3bcb9975692ad9d.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0
